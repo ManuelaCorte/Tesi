@@ -1,8 +1,21 @@
 \begin{thebibliography}{1}
 
-\bibitem{moon}
-Jules Verne.
-\newblock {\em De la Terre à la Lune}.
-\newblock Pierre-Jules Hetzel, 1865.
+\bibitem{OBDA}
+Elena Botoeva, Diego Calvanese, Benjamin Cogrel, Julien Corman, and Guohui
+  Xiao.
+\newblock Ontology-based data access -- beyond relational sources.
+\newblock {\em Intelligenza Artificiale}, 13:21--36, 2019.
+\newblock 1.
+
+\bibitem{OntopArchitecture}
+Diego Calvanese, Benjamin Cogrel, Sarah Komla-Ebri, Roman Kontchakov, Davide
+  Lanti, Martin Rezk, Mariano Rodriguez-Muro, and Guohui Xiao.
+\newblock Ontop: Answering sparql queries over relational databases.
+\newblock {\em Semantic Web}, 8(3):471--487, 2017.
+
+\bibitem{VKGOverview}
+Guohui Xiao, Linfang Ding, Benjamin Cogrel, and Diego Calvanese.
+\newblock Virtual knowledge graphs: An overview of systems and use cases.
+\newblock {\em Data Intelligence}, 1(3):201--223, 2019.
 
 \end{thebibliography}
