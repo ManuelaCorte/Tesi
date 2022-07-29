@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt,openright,notitlepage,twoside]{book}
+\raggedbottom % leave blank space at the end of the pages insted to adapt them
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+% packages
+\usepackage[utf8]{inputenc}				% encoding of the input
+\usepackage[italian]{babel} 			% document language
+\usepackage[headheight=15pt]{geometry} 	% margins definition
+\geometry{a4paper,top=30mm,bottom=30mm,left=30mm,right=25mm,heightrounded,bindingoffset=3mm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx} 					% for the figure
+\usepackage{fancyhdr} 					% manage header and footer 
+	\pagestyle{fancy}
+\usepackage{emptypage} 					% to create empty pages
+\usepackage[pdftex]{hyperref} 			% for interactive links
+	\hypersetup{colorlinks=true,allcolors=black}
+\usepackage{microtype} 					% enhanced text writing
+\usepackage{appendix} 					% to personalize the appendix
+\usepackage{mathtools} 					% math equations (load also AMSMATH)
+\usepackage{booktabs} 					% enhance table layout
+\usepackage{multirow} 					% enable multi rows in the tables
+\usepackage{multicol}					% enable multi colums in the tables
+\usepackage{pgfplotstable} 				% table from file with tabular data
+\usepackage{graphicx} 					% for the figure
+\usepackage{tikz} 						% for drawing
+\usepackage{pgfplots} 					% for the plot
+	\pgfplotsset{compat=1.14}
+\usepackage{subcaption} 				% enable subcaption (load also CAPTION)
+	\captionsetup{font=small,labelsep=period,format=hang,tableposition=top,figureposition=bottom}
+\usepackage{tocloft} 					% enhance list of figure and table
+\usepackage{cite} 						% enable citation from bibliography
+\usepackage{amsmath}       				% assumes amsmath package installed
+\usepackage{amssymb}       				% assumes amsmath package installed
+\usepackage{overpic}
+\usepackage{gensymb}
+\usepackage{wrapfig}
+\usepackage{afterpage}
+\usepackage{color,soul}
+\usepackage{tabto}
+\usepackage{todonotes}
+\usepackage{etoolbox}
+\usepackage{placeins}
+\usepackage{pdfpages}					% to include pdf pages from other files
+
+\usepackage{fancyvrb}					% set of packages useful to insert code
+\usepackage{fvextra}					% -
+\usepackage{listings}					% -
+
+% path for the images
+\graphicspath{ {./images/} }
+
+\begin{document}
+
+
+% Frontmatter
+\thispagestyle{empty} 	% remove all pages setup
+\begin{center}
+{\LARGE \bf UNIVERSITÀ DEGLI STUDI}\\ \vspace{0.25cm}
+{\LARGE \bf  DI TRENTO}
+\vspace{-2mm}\rule{\textwidth}{0.4pt}\\[0.5cm]
+
+{\Large Dipartimento di Ingegneria e Scienze dell'Informazione}\\[5pt]
+{\Large Corso di laurea in informatica }\\[0.8cm]
+
+\begin{center}
+	\includegraphics[scale = 0.35]{logo.png}
+\end{center}
+
+\vspace{1.7cm}
+{\Large  Elaborato finale}\\[1cm] 
+{\Large \bf TITLE OF THE}\\ \vspace{0.25cm}
+{\Large \bf MANUSCRIPT}\\[3cm] 
+
+
+\centering
+\begin{tabular}{ll}
+	\textbf{Supervisore:}      			\hspace{3cm}       	& \textbf{Laureando:}\\[5pt]
+    \textit{Prof. Bouquet Paolo}     \hspace{5cm}       	& \textit{Corte Pause Manuela}\\[2pt]
+															&
+\end{tabular}\\
+\vfill
+\rule{\textwidth}{0.4pt}\\[5pt]
+
+{\large Anno Accademico 2021/2022}\\[0.2cm]
+\end{center}
+
+% Acknowledgements
+%\input{chapters/acknowledgements}
+%\cleardoublepage
+
+
+% Index 
+\phantomsection
+\tableofcontents
+\cleardoublepage
+
+% Chapters
+\mainmatter
+\input{chapters/first_chapter}
+\input{chapters/conclusions}
+
+
+% Bibliography
+
+\nocite{*}
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}  
+\bibliography{bibliography.bib}  
+
+\end{document}
