@@ -1,0 +1,15 @@
+\BOOKMARK [0][-]{chapter.1}{Introduzione}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Ontopic}{chapter.1}% 2
+\BOOKMARK [0][-]{chapter.2}{Virtual Knowledge Graphs}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Cos'\350 un Virtual Knowledge Graph}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Il Virtual Knowledge Graph system Ontop}{chapter.2}% 5
+\BOOKMARK [2][-]{subsection.2.2.1}{Architettura}{section.2.2}% 6
+\BOOKMARK [2][-]{subsection.2.2.2}{Esempi utilizzo}{section.2.2}% 7
+\BOOKMARK [0][-]{chapter.3}{Esperienza}{}% 8
+\BOOKMARK [1][-]{section.3.1}{Il modulo bi-connector}{chapter.3}% 9
+\BOOKMARK [2][-]{subsection.3.1.1}{Creazione database}{section.3.1}% 10
+\BOOKMARK [2][-]{subsection.3.1.2}{Parsing query SQL}{section.3.1}% 11
+\BOOKMARK [1][-]{section.3.2}{Stato iniziale bi-connector}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.3}{Analisi prerequisiti}{chapter.3}% 13
+\BOOKMARK [0][-]{chapter.4}{Conclusions}{}% 14
+\BOOKMARK [1][-]{section.4.1}{Possibili sviluppi futuri}{chapter.4}% 15

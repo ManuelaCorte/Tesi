@@ -1,0 +1,26 @@
+\chapter{Esperienza}
+\label{cha:experience}
+
+\section{Il modulo bi-connector}
+\label{sec:bi-connector}
+Bi-connector: progetto con lo scopo di poter usare strumenti di BI come Tableau su ontologie. (a differenza di altre soluzioni NoSQL come MongoDB non esistono connettori pre-forniti)
+
+\subsection{Creazione database}
+\label{sec:bi-connector_db}
+Dai file dell'ontologia (.ttl) vengono estratte delle viste e con queste viste viene creato in locale un database PostgreSQL. (Per visualizzarlo ho usato DBeaver con la classe ProfJDBC.java)
+
+\subsection{Parsing query SQL}
+\label{sec:bi-connector_parsing}
+Su questo database è possibile fare query SQL. 
+Viene fatto il parsing di questa query e viene tradotta in un albero di nodi IQ che viene usato dall'ontologia per rispondere alla query.
+
+\section{Stato iniziale bi-connector}
+\label{sec:experience_start}
+Inizialmente veniva utilizzato il parser SQL interno di Ontop che però era molto limitato essendo usato per le query usate nei mapping che sono tipicamente semplici (union of conjunctive queries).
+Si è poi passato a JSqlParser (libreria esterna) che trasforma la query in una gerarchia traversabile di classi Java.
+Avendo un insieme di query limitato che era riconosciuto molto delle query erano o riscritte in una forma semplificata o non supportate del tutto
+
+\section{Analisi prerequisiti}
+\label{sec:section2}
+Analisi di quali fossero i costrutti usati nelle query automaticamente generate da Tableau e analisi di quale fosse il comportamento specifico di PostgreSQL su queste keyword
+

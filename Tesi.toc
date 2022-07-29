@@ -1,0 +1,17 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Ontopic}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Virtual Knowledge Graphs}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Cos'è un Virtual Knowledge Graph}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Il Virtual Knowledge Graph system Ontop}{3}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Architettura}{3}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Esempi utilizzo}{3}{subsection.2.2.2}%
+\contentsline {chapter}{\numberline {3}Esperienza}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Il modulo bi-connector}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Creazione database}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Parsing query SQL}{5}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Stato iniziale bi-connector}{5}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Analisi prerequisiti}{5}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Conclusions}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Possibili sviluppi futuri}{7}{section.4.1}%
