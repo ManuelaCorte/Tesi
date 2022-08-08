@@ -450,6 +450,9 @@ INPUT /home/manuela/Tesi/chapters/conclusions.tex
 INPUT /home/manuela/Tesi/chapters/conclusions.tex
 INPUT /home/manuela/Tesi/Tesi.bbl
 INPUT /home/manuela/Tesi/Tesi.bbl
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmtt12.tfm
 INPUT /home/manuela/Tesi/Tesi.aux
 INPUT /home/manuela/Tesi/Tesi.out
 INPUT /home/manuela/Tesi/Tesi.out
@@ -459,3 +462,4 @@ INPUT /usr/share/texmf/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr17.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmri12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmro12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb

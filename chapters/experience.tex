@@ -1,5 +1,9 @@
-\chapter{Esperienza}
+\chapter{Progetto}
 \label{cha:experience}
+
+\section{Ontopic}
+\label{sec:ontopic}
+Breve descrizione dell'azienda e di cosa si occupa (non so bene se mettere questa sezione qui o nel capitolo introduttivo)
 
 \section{Il modulo bi-connector}
 \label{sec:bi-connector}
@@ -7,20 +11,50 @@ Bi-connector: progetto con lo scopo di poter usare strumenti di BI come Tableau 
 
 \subsection{Creazione database}
 \label{sec:bi-connector_db}
-Dai file dell'ontologia (.ttl) vengono estratte delle viste e con queste viste viene creato in locale un database PostgreSQL. (Per visualizzarlo ho usato DBeaver con la classe ProfJDBC.java)
+Dai file dell'ontologia (.ttl) vengono estratte delle viste e con queste viste viene creato in locale un database PostgreSQL. (Per visualizzarlo ho usato DBeaver con la classe ProfJDBC.java per eseguire i test)
 
-\subsection{Parsing query SQL}
+\subsection{Parsing di query SQL}
 \label{sec:bi-connector_parsing}
-Su questo database è possibile fare query SQL. 
-Viene fatto il parsing di questa query e viene tradotta in un albero di nodi IQ che viene usato dall'ontologia per rispondere alla query.
+Su questo database creato inizialmente è possibile fare query SQL. 
+Viene fatto il parsing di queste query e vengono tradotte in un albero di nodi IQ che viene poi usato dall'ontologia per rispondere alla query.
 
 \section{Stato iniziale bi-connector}
 \label{sec:experience_start}
-Inizialmente veniva utilizzato il parser SQL interno di Ontop che però era molto limitato essendo usato per le query usate nei mapping che sono tipicamente semplici (union of conjunctive queries).
-Si è poi passato a JSqlParser (libreria esterna) che trasforma la query in una gerarchia traversabile di classi Java.
-Avendo un insieme di query limitato che era riconosciuto molto delle query erano o riscritte in una forma semplificata o non supportate del tutto
+Quando ho iniziato io il modulo già esisteva ed era funzionante per query del tipo SELECT-JOIN-WHERE e veniva utilizzato il parser SQL interno di Ontop che era però molto limitato essendo stato pensato inizialmente per le query usate nei mapping che sono tipicamente semplici (union of conjunctive queries).
+Avendo un insieme di query riconosciute molto limitato, molte delle query erano o riscritte in una forma semplificata o non supportate.
 
 \section{Analisi prerequisiti}
-\label{sec:section2}
-Analisi di quali fossero i costrutti usati nelle query automaticamente generate da Tableau e analisi di quale fosse il comportamento specifico di PostgreSQL su queste keyword
+\label{sec:prerequisits}
+Passaggio dal parser di Ontop a JSqlParser una volta uscita la versione 4.
 
+Analisi di quali fossero i costrutti usati nelle query automaticamente generate da Tableau (ad esempio viene usato moltissimo il GROUP BY) e analisi di quale fosse il comportamento specifico di PostgreSQL su queste keyword
+(e.g. in PostgreSQL la funzione CONCAT non è null-rejecting, MINUS non è supportato, tipo di NULL ordering di default, \dots)
+
+\section{Costrutti implementati}
+\label{sec:implementation}
+
+\subsection{Distinct, Limit e Offset}
+Distinct implementato tramite un semplice IQ node Distinct
+Limit e Offset implementati con un filtro
+Interessanti principalmente in quanto sono stati un primo approccio sia alle struttura generale del progetto / IQTree che a JSqlParser più che come funzionalità complesse da implementare.
+
+\subsection{Ordinamento delle righe}
+Order by più complesso in quanto richiede la creazione di comparatori, operazioni di sostituzione per la proiezione delle variabili 
+e la gestione del NULL ordering.
+
+\subsection{Combinazione di tabelle}
+Cross e inner join già presenti, implementazione left join (scontato di conseguenza il right join) 
+Problematiche sorte su colonne con stessi nomi
+
+\subsection{Operazioni insiemistiche}
+Operazioni su insiemi (unione e sottrazione) implementate con alcune restrizioni.
+L'implementazione della sottrazione è interessante (implementata come filtro su un left join).
+
+\subsection{Aggregazione}
+Funzioni di aggregazione (SUM, COUNT, MIN, MAX, AVG) per cui è stato necessario introdurre una funzionalità che ritardasse l'assegnazione del 
+tipo alla funzione. (Questo perché SPARQL a differenza di SQL usa una tipizzazione dinamica).
+Costrutto Group by e having (interessante l'implementazione per funzioni con la sostituzione dei functional term con variabili)
+
+\section{Risultati ottenuti}
+Con l'introduzione dell'aggregazione (e anche dell'order by) è stato possibile rimuovere buona parte delle query automaticamente create da Tableau -> accesso a Tableau 
+e prime dashboard create su dataset non banali (chiedere a Benjamin se ha qualche screenshot)
