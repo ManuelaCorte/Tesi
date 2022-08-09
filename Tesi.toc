@@ -15,8 +15,8 @@
 \contentsline {section}{\numberline {3.4}Analisi prerequisiti}{6}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Costrutti implementati}{6}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Distinct, Limit e Offset}{6}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Ordinamento delle righe}{6}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Combinazione di tabelle}{6}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.2}Ordinamento righe}{6}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Combinazione tabelle}{6}{subsection.3.5.3}%
 \contentsline {subsection}{\numberline {3.5.4}Operazioni insiemistiche}{6}{subsection.3.5.4}%
 \contentsline {subsection}{\numberline {3.5.5}Aggregazione}{6}{subsection.3.5.5}%
 \contentsline {section}{\numberline {3.6}Risultati ottenuti}{6}{section.3.6}%
