@@ -1,6 +1,7 @@
 \babel@toc {italian}{}
 \babel@toc {italian}{}
 \contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Data integration}{1}{section.1.1}%
 \contentsline {chapter}{\numberline {2}Virtual Knowledge Graphs}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Cos'è un Virtual Knowledge Graph}{3}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Il Virtual Knowledge Graph system Ontop}{3}{section.2.2}%

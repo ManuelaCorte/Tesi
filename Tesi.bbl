@@ -26,10 +26,22 @@ JSqlParser.
 \newblock Jsqlparser sourceforge.
 \newblock \url{http://jsqlparser.sourceforge.net/}.
 
+\bibitem{dataIntegrationDef}
+Maurizio Lenzerini.
+\newblock Data integration: A theoretical perspective.
+\newblock In {\em Proceedings of the twenty-first ACM SIGMOD-SIGACT-SIGART
+  symposium on Principles of database systems}, pages 233--246, 2002.
+
 \bibitem{IQ}
 Ontop.
 \newblock Intermediate query (iq).
 \newblock \url{https://ontop-vkg.org/dev/internals/iq.html}.
+
+\bibitem{DataIntegration}
+Bhavana Sayiram.
+\newblock Importance of data integration in the data decade.
+\newblock
+  \url{https://education.dellemc.com/content/dam/dell-emc/documents/en-us/2021KS_Sayiram-Data_Integration.pdf}.
 
 \bibitem{VKGOverview}
 Guohui Xiao, Linfang Ding, Benjamin Cogrel, and Diego Calvanese.

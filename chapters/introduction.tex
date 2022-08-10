@@ -1,3 +1,27 @@
 \chapter{Introduzione}
 \label{cha:intro}
 Riassunto introduttivo di quello che sarà l'argomento dell'elaborato
+
+\section{Data integration}
+I dati sono diventati una parte sempre più fondamentale della nostra vita e ancor di più in quella delle aziende al fine dell'assisterle nel processo di decision-making.
+Questi dati provengono da molteplici fonti come social network, tracking, sensori di IoT, \dots e risultano in una mole enorme di dati non strutturati e
+di conseguenza complessi da sfruttare per ricavarne informazioni rilevanti.
+Proprio per questo il mondo della data integration è così importante \cite{DataIntegration}.
+
+Possiamo definire la data integration come il problema del combinare dati a provenienti da livelli diversi e fornire all'utente finale una 
+visione unificata di questi dati\cite{dataIntegrationDef}. E' facile vedere quindi come questo concetto si adatti bene in un'azienda che utilizza vari sistemi, applicazioni 
+e piattaforme ognuna delle quali produce o raccoglie dati senza tenere conto degli altri applicativi (data silos). Oltre a questi applicativi, i dati che si vogliono utilizzare non 
+devono essere necessariamente interni all'azienda, ma possono anche essere esterni come ad esempio dataset da internet.
+
+Esistono approcci diversi alla data integration e quelle più tradizionale è certamente quello dei data warehouse, ovvero tutti i dati sono combinati e memorizzati in un solo posto (tipicamente un database). 
+Questo processo di "combinazione" è definito ETL (Extract, Transform, Load) e permette di rilevare e correggere inconsistenze tra i dati prima che venga fatto il merge di questi e permette inoltre di integrare 
+diversi tipi di dati e visualizzarli poi con un'unica vista complessiva.
+
+Questa soluzione risulta complessa da utilizzare per dataset che vengono modificati frequentemente e richiedono quindi che il processo di ETL, che risulta essere molto costoso, venga re-eseguito molte volte.
+Anche per questo si è quindi passati ad un paradigma basata sul \textit{loose coupling} ovvero un'interfaccia sulla quale eseguire query che vengono poi mappate ed eseguite sulle sorgenti originali eliminando il 
+problema dell'avere informazioni non aggiornate. 
+
+Oltre alla discussione sull'architettura del sistema di data integration anche l'aspetto semantico risulta importante al fine di evitare la collisione di termini uguali usati all'interno delle sorgenti con significati
+diversi. E' proprio da questa considerazione che nascono approcci basati su ontologie definiti come Ontology Based Data Access (OBDA). Queste soluzioni mitigano il problema appena descritto fornendo un vocabolario 
+comune da utilizzare. 
+
