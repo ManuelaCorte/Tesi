@@ -443,6 +443,10 @@ INPUT /home/manuela/Tesi/chapters/introduction.tex
 INPUT /home/manuela/Tesi/chapters/introduction.tex
 INPUT /home/manuela/Tesi/chapters/vkg.tex
 INPUT /home/manuela/Tesi/chapters/vkg.tex
+INPUT /home/manuela/Tesi/./images/KG.png
+INPUT ./images/KG.png
+INPUT ./images/KG.png
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT /home/manuela/Tesi/chapters/experience.tex
 INPUT /home/manuela/Tesi/chapters/experience.tex
@@ -458,6 +462,7 @@ INPUT /home/manuela/Tesi/Tesi.out
 INPUT /home/manuela/Tesi/Tesi.out
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmr17.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmri12.pfb

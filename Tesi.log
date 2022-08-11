@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.30)  10 AUG 2022 19:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.30)  11 AUG 2022 18:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1061,7 +1061,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 \c@lstlisting=\count382
-<./images/logo.png, id=123, 401.5pt x 401.5pt>
+<./images/logo.png, id=127, 401.5pt x 401.5pt>
 File: ./images/logo.png Graphic file (type png)
 <use ./images/logo.png>
 Package pdftex.def Info: ./images/logo.png  used on input line 67.
@@ -1123,22 +1123,30 @@ l.27
 <to be read again> 
                    \relax 
 l.1 \chapter
-            {Virtual Knowledge Graphs} [2]
+            {Knowledge Graphs} [2]
 Capitolo 2.
-) (/home/manuela/Tesi/chapters/experience.tex [3
+<./images/KG.png, id=183, 672.5125pt x 173.64874pt>
+File: ./images/KG.png Graphic file (type png)
+<use ./images/KG.png>
+Package pdftex.def Info: ./images/KG.png  used on input line 30.
+(pdftex.def)             Requested size: 336.25542pt x 86.82416pt.
 
-] [4
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-]
+[3
+
+]) (/home/manuela/Tesi/chapters/experience.tex [4 <./images/KG.png>]
 Capitolo 3.
-[5]) (/home/manuela/Tesi/chapters/conclusions.tex [6] [7] [8
+[5
+
+]) (/home/manuela/Tesi/chapters/conclusions.tex [6] [7] [8
 
 ]
 Capitolo 4.
 ) (/home/manuela/Tesi/Tesi.bbl [9] [10
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 27.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 33.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1147,12 +1155,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 2334) in paragraph at lines 41--45
+Underfull \hbox (badness 2334) in paragraph at lines 30--34
 []\T1/lmr/m/n/12 (+20) Bhavana Say-i-ram.  Im-por-tan-ce of da-ta in-te-gra-tion in the da-ta de-ca-
  []
 
 
-Underfull \hbox (badness 2799) in paragraph at lines 41--45
+Underfull \hbox (badness 2799) in paragraph at lines 30--34
 \T1/lmr/m/n/12 (+20) de.  [][]$\T1/lmtt/m/n/12 https : / / education . dellemc . com / content / dam / dell-[]emc / documents /
  []
 
@@ -1163,21 +1171,21 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 112.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 112.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 112.
 Package rerunfilecheck Info: File `Tesi.out' has not changed.
-(rerunfilecheck)             Checksum: 6583744813800B1F12C8570759BF3FD2;1557.
+(rerunfilecheck)             Checksum: 440535AA45F647CCD9DD83AB040691C7;1611.
  ) 
 Here is how much of TeX's memory you used:
- 37173 strings out of 481239
- 830427 string characters out of 5920376
- 1251746 words of memory out of 5000000
- 51586 multiletter control sequences out of 15000+600000
- 587721 words of font info for 90 fonts, out of 8000000 for 9000
+ 37207 strings out of 481239
+ 830899 string characters out of 5920376
+ 1251714 words of memory out of 5000000
+ 51607 multiletter control sequences out of 15000+600000
+ 591370 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,11n,111p,848b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
-Output written on /home/manuela/Tesi/Tesi.pdf (13 pages, 199850 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb>
+Output written on /home/manuela/Tesi/Tesi.pdf (13 pages, 242283 bytes).
 PDF statistics:
- 262 PDF objects out of 1000 (max. 8388607)
- 220 compressed objects within 3 object streams
- 46 named destinations out of 1000 (max. 500000)
- 17706 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 19767 words of extra memory for PDF output out of 20736 (max. 10000000)
 
