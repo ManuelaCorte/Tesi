@@ -6,21 +6,22 @@
 \contentsline {section}{\numberline {2.1}Cos'è un Knowledge Graph}{3}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Virtual Knowledge Graph}{4}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Il Virtual Knowledge Graph system Ontop}{5}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Intermediate Query language}{5}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Esempi di utilizzo}{5}{subsection.2.3.2}%
-\contentsline {chapter}{\numberline {3}Progetto}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Ontopic}{7}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Il modulo bi-connector}{7}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Creazione database}{7}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Parsing di query SQL}{7}{subsection.3.2.2}%
-\contentsline {section}{\numberline {3.3}Stato iniziale bi-connector}{7}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Analisi prerequisiti}{8}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Costrutti implementati}{8}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Distinct, Limit e Offset}{8}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Ordinamento righe}{8}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Combinazione tabelle}{8}{subsection.3.5.3}%
-\contentsline {subsection}{\numberline {3.5.4}Operazioni insiemistiche}{8}{subsection.3.5.4}%
-\contentsline {subsection}{\numberline {3.5.5}Aggregazione}{8}{subsection.3.5.5}%
-\contentsline {section}{\numberline {3.6}Risultati ottenuti}{8}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Conclusioni}{11}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Possibili sviluppi futuri}{11}{section.4.1}%
+\contentsline {subsection}{\numberline {2.3.1}Architettura del sistema}{5}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Intermediate Query language}{6}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Esempi di utilizzo}{7}{subsection.2.3.3}%
+\contentsline {chapter}{\numberline {3}Progetto}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Ontopic}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Il modulo bi-connector}{9}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Creazione database}{9}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Parsing di query SQL}{9}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}Stato iniziale bi-connector}{9}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Analisi prerequisiti}{10}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Costrutti implementati}{10}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Distinct, Limit e Offset}{10}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Ordinamento righe}{10}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Combinazione tabelle}{10}{subsection.3.5.3}%
+\contentsline {subsection}{\numberline {3.5.4}Operazioni insiemistiche}{10}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.5}Aggregazione}{10}{subsection.3.5.5}%
+\contentsline {section}{\numberline {3.6}Risultati ottenuti}{10}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Conclusioni}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Possibili sviluppi futuri}{13}{section.4.1}%

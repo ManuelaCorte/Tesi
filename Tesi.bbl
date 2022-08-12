@@ -7,6 +7,12 @@ Elena Botoeva, Diego Calvanese, Benjamin Cogrel, Julien Corman, and Guohui
 \newblock {\em Intelligenza Artificiale}, 13:21--36, 2019.
 \newblock 1.
 
+\bibitem{OntopArchitecture}
+Diego Calvanese, Benjamin Cogrel, Sarah Komla-Ebri, Roman Kontchakov, Davide
+  Lanti, Martin Rezk, Mariano Rodriguez-Muro, and Guohui Xiao.
+\newblock Ontop: Answering sparql queries over relational databases.
+\newblock {\em Semantic Web}, 8(3):471--487, 2017.
+
 \bibitem{KGDefinition}
 Lisa Ehrlinger and Wolfram W{\"o}{\ss}.
 \newblock Towards a definition of knowledge graphs.
@@ -32,11 +38,6 @@ Maurizio Lenzerini.
 \newblock Data integration: A theoretical perspective.
 \newblock In {\em Proceedings of the twenty-first ACM SIGMOD-SIGACT-SIGART
   symposium on Principles of database systems}, pages 233--246, 2002.
-
-\bibitem{OntopSite}
-Ontop.
-\newblock Ontop introduction.
-\newblock \url{https://ontop-vkg.org/guide/}.
 
 \bibitem{DataIntegration}
 Bhavana Sayiram.

@@ -19,7 +19,7 @@ In modo molto generale possiamo definire un Knowledge Graph come una struttura c
 Se vogliamo invece dare una definizione più formale possiamo definire un knowledge graph come una struttura che acquisisce e integra informazioni in una knowledge base
 e applica un motore d'inferenza per ricavare nuova conoscenza come mostrato in figura \ref{fig:KG}.
 In molte delle definizioni la presenza di una quantità elevata di dati (un ABox di grandi dimensioni) viene spesso considerata un aspetto caratterizzante di un Knowledge Graph,
-ma cosa significa nello specifico "qunatità elevata" non è meglio specificato.
+ma cosa significa nello specifico "quantità elevata" non è meglio specificato.
 
 La knowledge base è tipicamente implementata tramite un'ontologia, ovvero una struttura a grafo dove i nodi rappresentano gli oggetti e i valori mentre le relazione tra questi 
 e le loro proprietà sono rappresentate tramite archi. Questa rappresentazione tramite grafi permette una crescita più flessibile non avendo uno schema definito a priori ed è quindi adatto
@@ -74,16 +74,47 @@ tramite i mapping come l'ABox \cite{OBDA} \cite{VKGOverview}.
 
 \section{Il Virtual Knowledge Graph system Ontop}
 \label{sec:vkg_ontop}
-
 Ontop è un Virtual Knowledge Graph system open-source sviluppato dalla Libera Università di Bolzano e dall'azienda Ontopic s.r.l. . Riceve inoltre
 contributi importanti da Birkbeck, University of London.
 
-Ontop supporta glli standard W3C in materia di ontologie e Knowledge Graph; in particolare supporta RDF 1.1 come modello per i grafi, RDFS e OWL 2 QL per le
+\subsection{Architettura del sistema}
+Possiamo considerare Ontop come strutturato su quattro livelli e riassunto in figura \ref{fig:OntopArchitecture}
+\subsubsection*{Input}
+Ontop supporta gli standard W3C in materia di ontologie e Knowledge Graph; in particolare supporta RDF 1.1 come modello per i grafi, RDFS e OWL 2 QL per le
 ontologie, R2RML e un sistema di mapping di Ontop che può essere tradotto in R2RML per i mapping e supporta la maggior parte dei costrutti presenti in SPARQL 1.1.
-Inoltre, nonostante sia un VKG permette di materializzare il grafo RDF se necessario. \cite{OntopSite}
+
+Ontop supporta i maggiori DBMS tra cui PostgreSQL, MySQL, H2, Apache, \dots tramite JDBC e può anceh essere utilizzato con federazioni come Dremio.
+Inoltre, nonostante sia un VKG system permette di materializzare il grafo RDF se necessario.
+
+\subsubsection*{Core system}
+Parte centrale del sistema che si occupa della traduzione, ottimizzazione ed esecuzione delle query. Alcuni dei dettagli di questo meccanismo sono descritti nella
+sezione successiva \ref{sec:ontop_iq} \cite{OntopArchitecture}.
+\subsubsection*{API}
+Ontop può essere utilizzato come libreria Java disponibile tramite Maven ed implementa due API:
+\begin{itemize}
+    \item OWL API: implementazione di riferimento per la gestione di ontologie OWL.
+    \item Sesame: standard de-facto per la gestione di dati in formato RDF. In particolare, Ontop implemeta l'interfaccia Sesame SAIL (Storage And Inference Layer) che supporta 
+        inferenza e database relazionali.
+\end{itemize}
+\subsubsection*{Applicazioni}
+Ontop supporta anche applicazioni che permettono all'utente finale di eseguire query SPARQL in modo facilitato. Tra queste si citano in particolare in plugin per Protege basato sull'API OWL 
+che fornisce uno strumento grafico per l'editing dei mapping, l'esecuzione di query SPARQL, materializzazione delle triple RDF, \dots e la piattaforma Optique che utilizza Ontop come motore centrale 
+aggiungendo un interfaccia user-friendly per la creazione e visualizzazione di query, \dots .
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\linewidth]{OntopArchitecture.png}
+    \caption{Struttura di Ontop}
+    \label{fig:OntopArchitecture}
+\end{figure}
 
 \subsection{Intermediate Query language}
-Ontop era inizialmente basato su Datalog poi passato ad un proprio linguaggio interno (Intermediate Query)
+\label{sec:ontop_iq}
+Ontop era inizialmente basato su Datalog come motore interno per la traduzione delle query. Questo è però risultato essere insufficiente per permettere la traduzione di un frammento più grande di SPARQL 
+che supporta funzionalità non monotone come OPTIONAL, modificatori di cardinalità come DISTINCT e aggregazione che non possono essere espresse come unione di query congiuntive (UCQ). Per questo con la versione
+v4 Ontop ha adottato struttura dati chiamata Intermediate Query (IQ) che unisce sia SPARQL che l'algebra relazionale.
+
+
 
 IQ: rappresentazione usata per tradurre le query degli utenti in SPARQL nelle query SQL dei mapping
 
