@@ -1,5 +1,12 @@
 \begin{thebibliography}{1}
 
+\bibitem{OBDA}
+Elena Botoeva, Diego Calvanese, Benjamin Cogrel, Julien Corman, and Guohui
+  Xiao.
+\newblock Ontology-based data access -- beyond relational sources.
+\newblock {\em Intelligenza Artificiale}, 13:21--36, 2019.
+\newblock 1.
+
 \bibitem{KGDefinition}
 Lisa Ehrlinger and Wolfram W{\"o}{\ss}.
 \newblock Towards a definition of knowledge graphs.
@@ -26,10 +33,20 @@ Maurizio Lenzerini.
 \newblock In {\em Proceedings of the twenty-first ACM SIGMOD-SIGACT-SIGART
   symposium on Principles of database systems}, pages 233--246, 2002.
 
+\bibitem{OntopSite}
+Ontop.
+\newblock Ontop introduction.
+\newblock \url{https://ontop-vkg.org/guide/}.
+
 \bibitem{DataIntegration}
 Bhavana Sayiram.
 \newblock Importance of data integration in the data decade.
 \newblock
   \url{https://education.dellemc.com/content/dam/dell-emc/documents/en-us/2021KS_Sayiram-Data_Integration.pdf}.
+
+\bibitem{VKGOverview}
+Guohui Xiao, Linfang Ding, Benjamin Cogrel, and Diego Calvanese.
+\newblock Virtual knowledge graphs: An overview of systems and use cases.
+\newblock {\em Data Intelligence}, 1(3):201--223, 2019.
 
 \end{thebibliography}
