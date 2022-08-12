@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt,openright,notitlepage,twoside]{book}
+\documentclass[a4paper,12pt,openright,notitlepage,oneside]{book}
 \raggedbottom % leave blank space at the end of the pages instead to adapt them
 
 \usepackage[T1]{fontenc}
@@ -12,6 +12,7 @@
 \usepackage{graphicx} 					% for the figure
 \usepackage{fancyhdr} 					% manage header and footer 
 	\pagestyle{fancy}
+
 \usepackage{emptypage} 					% to create empty pages
 \usepackage[pdftex]{hyperref} 			% for interactive links
 	\hypersetup{colorlinks=true,allcolors=black}
@@ -98,6 +99,7 @@
 
 % Chapters
 \mainmatter
+\fancyhead[L]{}
 \input{chapters/introduction.tex}
 \input{chapters/vkg.tex}
 \input{chapters/experience.tex}

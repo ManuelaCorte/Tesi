@@ -1,15 +1,15 @@
 # Fdb version 3
-["bibtex Tesi"] 1660321904 "Tesi.aux" "Tesi.bbl" "Tesi" 1660321924
+["bibtex Tesi"] 1660322946 "Tesi.aux" "Tesi.bbl" "Tesi" 1660323015
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "Tesi.aux" 1660321924 6603 280481feb2ea23a335ff459c3731c3cd "pdflatex"
+  "Tesi.aux" 1660323015 6593 e4ec1c9cb655f6a6fafc6a22d65140a0 "pdflatex"
   "bibliography.bib" 1660315982 4588 3d9e9e1962a465dfb4b261be5c0cb7b8 ""
   (generated)
   "Tesi.blg"
   "Tesi.bbl"
-["pdflatex"] 1660321923 "/home/manuela/Tesi/Tesi.tex" "/home/manuela/Tesi/Tesi.pdf" "Tesi" 1660321924
+["pdflatex"] 1660323014 "/home/manuela/Tesi/Tesi.tex" "/home/manuela/Tesi/Tesi.pdf" "Tesi" 1660323015
   "/etc/texmf/web2c/texmf.cnf" 1635606529 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/manuela/Tesi/Tesi.aux" 1660321924 6603 280481feb2ea23a335ff459c3731c3cd ""
-  "/home/manuela/Tesi/Tesi.tex" 1660316275 3465 050a66e2750266e0a2955fe7e0c400ea ""
+  "/home/manuela/Tesi/Tesi.aux" 1660323015 6593 e4ec1c9cb655f6a6fafc6a22d65140a0 ""
+  "/home/manuela/Tesi/Tesi.tex" 1660323013 3482 6ad435302507fc1fd8d7a84fe36bab7b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -286,11 +286,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1635606903 4770781 1ed1abab22da9c3e2cc82e4db562318b ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1635606932 8255824 45d527db215f522df193c41c40de272c ""
-  "Tesi.aux" 1660321924 6603 280481feb2ea23a335ff459c3731c3cd "pdflatex"
-  "Tesi.bbl" 1660321904 2068 8b659b2b5cd5fc4792903271181227c8 "bibtex Tesi"
-  "Tesi.out" 1660321924 1689 feda53231ffabe18d62cf52e9bedcee1 "pdflatex"
-  "Tesi.tex" 1660316275 3465 050a66e2750266e0a2955fe7e0c400ea ""
-  "Tesi.toc" 1660321924 2135 048bcd337cbff1815638be3a00cb4ece "pdflatex"
+  "Tesi.aux" 1660323015 6593 e4ec1c9cb655f6a6fafc6a22d65140a0 "pdflatex"
+  "Tesi.bbl" 1660322946 2068 8b659b2b5cd5fc4792903271181227c8 "bibtex Tesi"
+  "Tesi.out" 1660323015 1689 feda53231ffabe18d62cf52e9bedcee1 "pdflatex"
+  "Tesi.tex" 1660323013 3482 6ad435302507fc1fd8d7a84fe36bab7b ""
+  "Tesi.toc" 1660323015 2127 8a1fbba2996b00afb6f0d29b53fc952c "pdflatex"
   "chapters/conclusions.tex" 1659948992 553 5bde86092f43dfd0a32da3447dd94640 ""
   "chapters/experience.tex" 1659951196 3676 202c2a0970f3d141b335a905bee0dbcb ""
   "chapters/introduction.tex" 1660291660 2679 10d6590d22b47990e389f88cf44da99a ""
@@ -300,10 +300,10 @@
   "images/VKGRewriting.png" 1659112421 85895 f5a431374488cb6973d6de23075d8d96 ""
   "images/logo.png" 1659081461 22405 c7c97e1f457426285d5c605efb1440b1 ""
   (generated)
-  "Tesi.pdf"
-  "Tesi.toc"
+  "Tesi.log"
   "Tesi.aux"
+  "Tesi.pdf"
   "/home/manuela/Tesi/Tesi.pdf"
+  "Tesi.toc"
   "Tesi.out"
   "/home/manuela/Tesi/Tesi.log"
-  "Tesi.log"
