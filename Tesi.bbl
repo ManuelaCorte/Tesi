@@ -13,6 +13,12 @@ Diego Calvanese, Benjamin Cogrel, Sarah Komla-Ebri, Roman Kontchakov, Davide
 \newblock Ontop: Answering sparql queries over relational databases.
 \newblock {\em Semantic Web}, 8(3):471--487, 2017.
 
+\bibitem{VKGMedical}
+Diego Calvanese, Davide Lanti, Tarcisio~Mendes De~Farias, Alessandro Mosca, and
+  Guohui Xiao.
+\newblock Accessing scientific data through knowledge graphs with ontop.
+\newblock {\em Patterns}, 2(10):100346, 2021.
+
 \bibitem{KGDefinition}
 Lisa Ehrlinger and Wolfram W{\"o}{\ss}.
 \newblock Towards a definition of knowledge graphs.

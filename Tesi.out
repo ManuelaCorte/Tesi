@@ -1,24 +1,25 @@
 \BOOKMARK [0][-]{chapter.1}{Introduzione}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Knowledge Graphs}{}% 2
 \BOOKMARK [1][-]{section.2.1}{Cos'\350 un Knowledge Graph}{chapter.2}% 3
-\BOOKMARK [1][-]{section.2.2}{Virtual Knowledge Graph}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.3}{Il Virtual Knowledge Graph system Ontop}{chapter.2}% 5
-\BOOKMARK [2][-]{subsection.2.3.1}{Architettura del sistema}{section.2.3}% 6
-\BOOKMARK [2][-]{subsection.2.3.2}{Intermediate Query language}{section.2.3}% 7
-\BOOKMARK [2][-]{subsection.2.3.3}{Esempi di utilizzo}{section.2.3}% 8
-\BOOKMARK [0][-]{chapter.3}{Progetto}{}% 9
-\BOOKMARK [1][-]{section.3.1}{Ontopic}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.2}{Il modulo bi-connector}{chapter.3}% 11
-\BOOKMARK [2][-]{subsection.3.2.1}{Creazione database}{section.3.2}% 12
-\BOOKMARK [2][-]{subsection.3.2.2}{Parsing di query SQL}{section.3.2}% 13
-\BOOKMARK [1][-]{section.3.3}{Stato iniziale bi-connector}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.4}{Analisi prerequisiti}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.5}{Costrutti implementati}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.5.1}{Distinct, Limit e Offset}{section.3.5}% 17
-\BOOKMARK [2][-]{subsection.3.5.2}{Ordinamento righe}{section.3.5}% 18
-\BOOKMARK [2][-]{subsection.3.5.3}{Combinazione tabelle}{section.3.5}% 19
-\BOOKMARK [2][-]{subsection.3.5.4}{Operazioni insiemistiche}{section.3.5}% 20
-\BOOKMARK [2][-]{subsection.3.5.5}{Aggregazione}{section.3.5}% 21
-\BOOKMARK [1][-]{section.3.6}{Risultati ottenuti}{chapter.3}% 22
-\BOOKMARK [0][-]{chapter.4}{Conclusioni}{}% 23
-\BOOKMARK [1][-]{section.4.1}{Possibili sviluppi futuri}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.2.1.1}{Definizione}{section.2.1}% 4
+\BOOKMARK [1][-]{section.2.2}{Virtual Knowledge Graph}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{Il Virtual Knowledge Graph system Ontop}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.3.1}{Architettura del sistema}{section.2.3}% 7
+\BOOKMARK [2][-]{subsection.2.3.2}{Intermediate Query language}{section.2.3}% 8
+\BOOKMARK [2][-]{subsection.2.3.3}{Esempi di utilizzo}{section.2.3}% 9
+\BOOKMARK [0][-]{chapter.3}{Progetto}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Ontopic}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Il modulo bi-connector}{chapter.3}% 12
+\BOOKMARK [2][-]{subsection.3.2.1}{Creazione database}{section.3.2}% 13
+\BOOKMARK [2][-]{subsection.3.2.2}{Parsing di query SQL}{section.3.2}% 14
+\BOOKMARK [1][-]{section.3.3}{Stato iniziale bi-connector}{chapter.3}% 15
+\BOOKMARK [1][-]{section.3.4}{Analisi prerequisiti}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.5}{Costrutti implementati}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.5.1}{Distinct, Limit e Offset}{section.3.5}% 18
+\BOOKMARK [2][-]{subsection.3.5.2}{Ordinamento righe}{section.3.5}% 19
+\BOOKMARK [2][-]{subsection.3.5.3}{Combinazione tabelle}{section.3.5}% 20
+\BOOKMARK [2][-]{subsection.3.5.4}{Operazioni insiemistiche}{section.3.5}% 21
+\BOOKMARK [2][-]{subsection.3.5.5}{Aggregazione}{section.3.5}% 22
+\BOOKMARK [1][-]{section.3.6}{Risultati ottenuti}{chapter.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Conclusioni}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Possibili sviluppi futuri}{chapter.4}% 25

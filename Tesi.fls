@@ -438,6 +438,7 @@ INPUT ./images/Dataintegration.png
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT /home/manuela/Tesi/chapters/vkg.tex
 INPUT /home/manuela/Tesi/chapters/vkg.tex
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT /home/manuela/Tesi/./images/KG.png
 INPUT ./images/KG.png
 INPUT ./images/KG.png
@@ -446,7 +447,6 @@ INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /home/manuela/Tesi/./images/VKGRewriting.png
 INPUT ./images/VKGRewriting.png
 INPUT ./images/VKGRewriting.png
-INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT /home/manuela/Tesi/./images/OntopArchitecture.png
 INPUT ./images/OntopArchitecture.png
 INPUT ./images/OntopArchitecture.png
