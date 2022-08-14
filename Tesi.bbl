@@ -44,6 +44,11 @@ Ontop.
 \newblock Intermediate query (iq).
 \newblock \url{https://ontop-vkg.org/dev/internals/iq.html}.
 
+\bibitem{DataIntegrationHistory}
+SAP.
+\newblock What is data integration?
+\newblock \url{https://www.sap.com/insights/what-is-data-integration.html}.
+
 \bibitem{DataIntegration}
 Bhavana Sayiram.
 \newblock Importance of data integration in the data decade.
