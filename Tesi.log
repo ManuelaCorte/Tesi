@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.30)  12 AUG 2022 18:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.10.30)  14 AUG 2022 16:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -804,34 +804,13 @@ Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
 Package: tabto 2018/12/28  v 1.4  Another tabbing mechanism
 \CurrentLineWidth=\dimen332
 \TabPrevPos=\dimen333
-) (/usr/share/texlive/texmf-dist/tex/latex/todonotes/todonotes.sty
-Package: todonotes 2019/01/24 v1.1.2 Todonotes source and documentation.
-Package: todonotes 2018/11/22
- (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
- (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks48
-\XKV@tempa@toks=\toks49
-)
-\XKV@depth=\count341
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
-File: tikzlibraryshadows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
-File: tikzlibraryfadings.code.tex 2020/01/08 v3.1.5b (3.1.5b)
- (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
-File: pgflibraryfadings.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)))
-\c@@todonotes@numberoftodonotes=\count342
 ) (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
 ) (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
 Package: pdfpages 2020/01/28 v0.5q Insert pages of external PDF documents (AM)
- (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
 )
 \AM@pagewidth=\dimen334
@@ -840,18 +819,23 @@ Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
 File: pppdftex.def 2020/01/28 v0.5q Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box112
-\AM@global@opts=\toks50
-\AM@pagecnt=\count343
-\AM@toc@title=\toks51
-\c@AM@survey=\count344
+\AM@global@opts=\toks48
+\AM@pagecnt=\count341
+\AM@toc@title=\toks49
+\c@AM@survey=\count342
 \AM@templatesizebox=\box113
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks50
+\verbatim@line=\toks51
+\verbatim@in@stream=\read5
 ) (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2020/01/13 v3.5 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count345
-\FV@InFile=\read5
+\FV@CodeLineNo=\count343
+\FV@InFile=\read6
 \FV@TabBox=\box114
-\c@FancyVerbLine=\count346
-\FV@StepNumber=\count347
+\c@FancyVerbLine=\count344
+\FV@StepNumber=\count345
 \FV@OutFile=\write4
 ) (/usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
 Package: fvextra 2019/02/04 v1.4 fvextra - extensions and patches for fancyvrb
@@ -861,61 +845,61 @@ Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbat
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )) (/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count348
+\linenopenalty=\count346
 \output=\toks52
-\linenoprevgraf=\count349
+\linenoprevgraf=\count347
 \linenumbersep=\dimen336
 \linenumberwidth=\dimen337
-\c@linenumber=\count350
-\c@pagewiselinenumber=\count351
-\c@LN@truepage=\count352
-\c@internallinenumber=\count353
-\c@internallinenumbers=\count354
+\c@linenumber=\count348
+\c@pagewiselinenumber=\count349
+\c@LN@truepage=\count350
+\c@internallinenumber=\count351
+\c@internallinenumbers=\count352
 \quotelinenumbersep=\dimen338
 \bframerule=\dimen339
 \bframesep=\dimen340
 \bframebox=\box115
 LaTeX Info: Redefining \\ on input line 3056.
 )
-\c@FV@TrueTabGroupLevel=\count355
-\c@FV@TrueTabCounter=\count356
+\c@FV@TrueTabGroupLevel=\count353
+\c@FV@TrueTabCounter=\count354
 \FV@TabBox@Group=\box116
 \FV@TmpLength=\skip108
-\c@FV@HighlightLinesStart=\count357
-\c@FV@HighlightLinesStop=\count358
-\FV@LoopCount=\count359
+\c@FV@HighlightLinesStart=\count355
+\c@FV@HighlightLinesStop=\count356
+\FV@LoopCount=\count357
 \FV@NCharsBox=\box117
 \FV@BreakIndent=\dimen341
-\FV@BreakIndentNChars=\count360
+\FV@BreakIndentNChars=\count358
 \FV@BreakSymbolSepLeft=\dimen342
-\FV@BreakSymbolSepLeftNChars=\count361
+\FV@BreakSymbolSepLeftNChars=\count359
 \FV@BreakSymbolSepRight=\dimen343
-\FV@BreakSymbolSepRightNChars=\count362
+\FV@BreakSymbolSepRightNChars=\count360
 \FV@BreakSymbolIndentLeft=\dimen344
-\FV@BreakSymbolIndentLeftNChars=\count363
+\FV@BreakSymbolIndentLeftNChars=\count361
 \FV@BreakSymbolIndentRight=\dimen345
-\FV@BreakSymbolIndentRightNChars=\count364
-\c@FancyVerbLineBreakLast=\count365
+\FV@BreakSymbolIndentRightNChars=\count362
+\c@FancyVerbLineBreakLast=\count363
 \FV@LineBox=\box118
 \FV@LineIndentBox=\box119
 \FV@LineWidth=\dimen346
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count366
+\lst@mode=\count364
 \lst@gtempboxa=\box120
 \lst@token=\toks53
-\lst@length=\count367
+\lst@length=\count365
 \lst@currlwidth=\dimen347
-\lst@column=\count368
-\lst@pos=\count369
+\lst@column=\count366
+\lst@pos=\count367
 \lst@lostspace=\dimen348
 \lst@width=\dimen349
-\lst@newlines=\count370
-\lst@lineno=\count371
+\lst@newlines=\count368
+\lst@lineno=\count369
 \lst@maxwidth=\dimen350
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
-\c@lstnumber=\count372
-\lst@skipnumbers=\count373
+\c@lstnumber=\count370
+\lst@skipnumbers=\count371
 \lst@framebox=\box121
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2019/09/10 1.8c listings configuration
@@ -923,33 +907,33 @@ File: listings.cfg 2019/09/10 1.8c listings configuration
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count374
+\l__kernel_color_stack_int=\count372
 \l__pdf_internal_box=\box122
 ) (/home/manuela/Tesi/Tesi.aux)
 \openout1 = `Tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53.
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \it@ocap on input line 54.
-LaTeX Info: Redefining \it@ccap on input line 54.
+LaTeX Info: Redefining \it@ocap on input line 53.
+LaTeX Info: Redefining \it@ccap on input line 53.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -988,16 +972,16 @@ LaTeX Info: Redefining \it@ccap on input line 54.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count375
+\scratchcounter=\count373
 \scratchdimen=\dimen351
 \scratchbox=\box123
-\nofMPsegments=\count376
-\nofMParguments=\count377
+\nofMPsegments=\count374
+\nofMParguments=\count375
 \everyMPshowfont=\toks54
-\MPscratchCnt=\count378
+\MPscratchCnt=\count376
 \MPscratchDim=\dimen352
-\MPnumerator=\count379
-\makeMPintoPDFobject=\count380
+\MPnumerator=\count377
+\makeMPintoPDFobject=\count378
 \everyMPtoPDFconversion=\toks55
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1006,7 +990,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \AtBeginShipoutBox=\box124
-Package hyperref Info: Link coloring ON on input line 54.
+Package hyperref Info: Link coloring ON on input line 53.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1014,23 +998,23 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count381
+\c@section@level=\count379
 )
-LaTeX Info: Redefining \ref on input line 54.
-LaTeX Info: Redefining \pageref on input line 54.
-LaTeX Info: Redefining \nameref on input line 54.
+LaTeX Info: Redefining \ref on input line 53.
+LaTeX Info: Redefining \pageref on input line 53.
+LaTeX Info: Redefining \nameref on input line 53.
  (/home/manuela/Tesi/Tesi.out) (/home/manuela/Tesi/Tesi.out)
 \@outlinefile=\write5
 \openout5 = `Tesi.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 54.
+LaTeX Info: Redefining \microtypecontext on input line 53.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `basictext'.
-LaTeX Info: Redefining \showhyphens on input line 54.
+LaTeX Info: Redefining \showhyphens on input line 53.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1045,17 +1029,14 @@ Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \symgns@font=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/lmr/m/n --> TS1/lmr/b/n on input line 54.
-Package gensymb Info: Math companion symbols declared on input line 54.
-LaTeX Info: Redefining \degree on input line 54.
-LaTeX Info: Redefining \celsius on input line 54.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 54.
-LaTeX Info: Redefining \ohm on input line 54.
-Package gensymb Info: Using \textohm for \ohm on input line 54.
-Package gensymb Info: Using \textmu for \micro on input line 54.
-
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 54.
-
+(Font)                  TS1/lmr/m/n --> TS1/lmr/b/n on input line 53.
+Package gensymb Info: Math companion symbols declared on input line 53.
+LaTeX Info: Redefining \degree on input line 53.
+LaTeX Info: Redefining \celsius on input line 53.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \perthousand on input line 53.
+LaTeX Info: Redefining \ohm on input line 53.
+Package gensymb Info: Using \textohm for \ohm on input line 53.
+Package gensymb Info: Using \textmu for \micro on input line 53.
 (/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
@@ -1063,47 +1044,47 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-\c@lstlisting=\count382
-<./images/logo.png, id=131, 401.5pt x 401.5pt>
+\c@lstlisting=\count380
+<./images/logo.png, id=107, 401.5pt x 401.5pt>
 File: ./images/logo.png Graphic file (type png)
 <use ./images/logo.png>
-Package pdftex.def Info: ./images/logo.png  used on input line 69.
+Package pdftex.def Info: ./images/logo.png  used on input line 68.
 (pdftex.def)             Requested size: 140.5271pt x 140.5271pt.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 79.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 78.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 79.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 78.
  (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 79.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 78.
  (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 79.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 78.
  (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 79.
+(Font)              <12> on input line 78.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 79.
+(Font)              <8> on input line 78.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 79.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 79.
+(Font)              <6> on input line 78.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 79.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 79.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 78.
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ) (/home/manuela/Tesi/Tesi.toc [1
@@ -1121,38 +1102,40 @@ Capitolo 1.
 
 ]) (/home/manuela/Tesi/chapters/vkg.tex [2]
 Capitolo 2.
-<./images/KG.png, id=191, 672.5125pt x 173.64874pt>
+<./images/KG.png, id=166, 672.5125pt x 173.64874pt>
 File: ./images/KG.png Graphic file (type png)
 <use ./images/KG.png>
 Package pdftex.def Info: ./images/KG.png  used on input line 32.
 (pdftex.def)             Requested size: 324.36143pt x 83.75319pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [3
 
 ] [4 <./images/KG.png>]
-<./images/VKGRewriting.png, id=214, 677.53125pt x 395.4775pt>
+<./images/VKGRewriting.png, id=190, 677.53125pt x 395.4775pt>
 File: ./images/VKGRewriting.png Graphic file (type png)
 <use ./images/VKGRewriting.png>
 Package pdftex.def Info: ./images/VKGRewriting.png  used on input line 69.
 (pdftex.def)             Requested size: 324.36143pt x 189.33824pt.
  [5 <./images/VKGRewriting.png>]
-<./images/OntopArchitecture.png, id=231, 651.43375pt x 381.425pt>
+<./images/OntopArchitecture.png, id=207, 651.43375pt x 381.425pt>
 File: ./images/OntopArchitecture.png Graphic file (type png)
 <use ./images/OntopArchitecture.png>
 Package pdftex.def Info: ./images/OntopArchitecture.png  used on input line 106.
 (pdftex.def)             Requested size: 324.36143pt x 189.92632pt.
-) (/home/manuela/Tesi/chapters/experience.tex [6 <./images/OntopArchitecture.png>] [7]
-Capitolo 3.
-[8
+ [6 <./images/OntopArchitecture.png>]
+Underfull \hbox (badness 4266) in paragraph at lines 122--124
+[]\T1/lmr/m/n/12 (+20) sostituzione: per so-sti-tu-zio-ne in-ten-dia-mo un'e-spres-sio-ne del-la for-ma
+ []
 
-]) (/home/manuela/Tesi/chapters/conclusions.tex [9] [10]
+[7] [8]) (/home/manuela/Tesi/chapters/experience.tex [9]
+Capitolo 3.
+[10
+
+]) (/home/manuela/Tesi/chapters/conclusions.tex [11] [12]
 Capitolo 4.
-) (/home/manuela/Tesi/Tesi.bbl [11
+) (/home/manuela/Tesi/Tesi.bbl [13
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 46.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 45.
  (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1161,39 +1144,34 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 2334) in paragraph at lines 43--47
+Underfull \hbox (badness 1728) in paragraph at lines 48--52
 []\T1/lmr/m/n/12 (+20) Bhavana Say-i-ram.  Im-por-tan-ce of da-ta in-te-gra-tion in the da-ta de-ca-
  []
 
+) [14
 
-Underfull \hbox (badness 2799) in paragraph at lines 43--47
-\T1/lmr/m/n/12 (+20) de.  [][]$\T1/lmtt/m/n/12 https : / / education . dellemc . com / content / dam / dell-[]emc / documents /
- []
-
-) [12
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 115.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 115.
+] [15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
  (/home/manuela/Tesi/Tesi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 115.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 115.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
 Package rerunfilecheck Info: File `Tesi.out' has not changed.
 (rerunfilecheck)             Checksum: FEDA53231FFABE18D62CF52E9BEDCEE1;1689.
  ) 
 Here is how much of TeX's memory you used:
- 37260 strings out of 481239
- 831734 string characters out of 5920376
- 1251964 words of memory out of 5000000
- 51629 multiletter control sequences out of 15000+600000
- 597987 words of font info for 107 fonts, out of 8000000 for 9000
+ 36734 strings out of 481239
+ 819021 string characters out of 5920376
+ 1237835 words of memory out of 5000000
+ 51107 multiletter control sequences out of 15000+600000
+ 598480 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,11n,111p,848b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on /home/manuela/Tesi/Tesi.pdf (14 pages, 442122 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmro12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on /home/manuela/Tesi/Tesi.pdf (17 pages, 467542 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
- 57 named destinations out of 1000 (max. 500000)
- 20809 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 336 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 20713 words of extra memory for PDF output out of 20736 (max. 10000000)
 

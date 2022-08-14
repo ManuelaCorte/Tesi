@@ -27,7 +27,7 @@ per rappresentare domini complessi che attingono dati da fonti molteplici e dive
 contengono la maggior parte dei costrutti usati nei linguaggi di query più tradizionali come join, unioni, proiezioni, \dots \cite{KGIntro}.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width = 0.75\linewidth]{KG}
     \caption{Struttura di un KG}
@@ -64,7 +64,7 @@ Se vogliamo caratterizzare un Virtual Knowledge Graph sotto il punto di vista de
 tramite i mapping come l'ABox \cite{OBDA} \cite{VKGOverview}. 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width = 0.75\linewidth]{VKGRewriting.png}
     \caption{Riscrittura di una query in un VGK}
@@ -83,7 +83,7 @@ Possiamo considerare Ontop come strutturato su quattro livelli e riassunto in fi
 Ontop supporta gli standard W3C in materia di ontologie e Knowledge Graph; in particolare supporta RDF 1.1 come modello per i grafi, RDFS e OWL 2 QL per le
 ontologie, R2RML e un sistema di mapping di Ontop che può essere tradotto in R2RML per i mapping e supporta la maggior parte dei costrutti presenti in SPARQL 1.1.
 
-Ontop supporta i maggiori DBMS tra cui PostgreSQL, MySQL, H2, Apache, \dots tramite JDBC e può anceh essere utilizzato con federazioni come Dremio.
+Ontop supporta i maggiori DBMS tra cui PostgreSQL, MySQL, H2, Apache, \dots tramite JDBC e può anche essere utilizzato con federazioni come Dremio.
 Inoltre, nonostante sia un VKG system permette di materializzare il grafo RDF se necessario.
 
 \subsubsection*{Core system}
@@ -93,7 +93,7 @@ sezione successiva \ref{sec:ontop_iq} \cite{OntopArchitecture}.
 Ontop può essere utilizzato come libreria Java disponibile tramite Maven ed implementa due API:
 \begin{itemize}
     \item OWL API: implementazione di riferimento per la gestione di ontologie OWL.
-    \item Sesame: standard de-facto per la gestione di dati in formato RDF. In particolare, Ontop implemeta l'interfaccia Sesame SAIL (Storage And Inference Layer) che supporta 
+    \item Sesame: standard de-facto per la gestione di dati in formato RDF. In particolare, Ontop implementa l'interfaccia Sesame SAIL (Storage And Inference Layer) che supporta 
         inferenza e database relazionali.
 \end{itemize}
 \subsubsection*{Applicazioni}
@@ -101,7 +101,7 @@ Ontop supporta anche applicazioni che permettono all'utente finale di eseguire q
 che fornisce uno strumento grafico per l'editing dei mapping, l'esecuzione di query SPARQL, materializzazione delle triple RDF, \dots e la piattaforma Optique che utilizza Ontop come motore centrale 
 aggiungendo un interfaccia user-friendly per la creazione e visualizzazione di query, \dots .
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.75\linewidth]{OntopArchitecture.png}
     \caption{Struttura di Ontop}
@@ -112,13 +112,73 @@ aggiungendo un interfaccia user-friendly per la creazione e visualizzazione di q
 \label{sec:ontop_iq}
 Ontop era inizialmente basato su Datalog come motore interno per la traduzione delle query. Questo è però risultato essere insufficiente per permettere la traduzione di un frammento più grande di SPARQL 
 che supporta funzionalità non monotone come OPTIONAL, modificatori di cardinalità come DISTINCT e aggregazione che non possono essere espresse come unione di query congiuntive (UCQ). Per questo con la versione
-v4 Ontop ha adottato struttura dati chiamata Intermediate Query (IQ) che unisce sia SPARQL che l'algebra relazionale.
+v4 Ontop ha adottato uan struttura dati interna diversa chiamata Intermediate Query (IQ) che fornisce una rappresentazioni uniforme sia per le query SPARQL eseguite dagli utenti che per le query SQL dei mapping.
+Sostanzialmente un IQ è una rappresentazione tramite un albero radicato di un'espressione algebrica dove quest'algebra è un compromesso tra l'algebra di SPARQL da una parte e l'algebra relazionale tipica dei database 
+relazionali dall'altra.
 
+Prima di definire più nel dettaglio quest'algebra è necessario spiegare alcuni altri termini e in particolare:
+\begin{itemize}
+    \item termine: per termine indichiamo qualsiasi variabile, costante (incluso NULL) o termine funzionale costruito a partire da variabili o costanti usando simboli funzionali di SPARQL, SQL o interni
+    \item sostituzione: per sostituzione intendiamo un'espressione della forma \linebreak
+        $x_1/\mu_1 , \dots , x_n/\mu_n $ dove $x$ corrisponde ad una variabile e $\mu$ ad un termine usato o per la proiezione o per l'aggregazione.
+\end{itemize} \cite{Ontop}
 
+I nodi che compongono questo albero IQ possono essere:
+\subsubsection*{Nodi foglia} 
+Tra i nodi che compongono le foglie dell'albero i più interessanti sono:
+    \begin{itemize}
+        \item intensional data node: node prototipo che si ci aspetta venga sostituito da un IQ ed è usato principlamente per rappresentare triple e quadruple RDF
+        \item extensional data node: simile a un intensional data node con la differenza che non deve essere necessariamente essere sostituito (ad esempio se rappresenta il nome di una tabella)
+        \item empty node: può essere visto come uno specifico tipo di data node che rappresenta un insieme vuoto di tuple
+        \item true node: 
+        \item native node
+        \item values node
+    \end{itemize}
+\subsubsection*{Nodi interni} 
+I nodi interni dell'albero risultano essere più interessanti rispetto alle foglie in quanto rappresentano quelle che sono le operazioni possibili e che devono essere tradotte tra SPARQL e SQL. Tra queste abbiamo:
+    \begin{itemize}
+        \item filter node: filtra il proprio nodo figlio in base ad una condizione
+        \item inner join node: natural join tra gli n figli del nodo sui quali può anche essere applicata una condizione booleana di join
+        \item left join node: rappresentazione di left outer join tra i due figli del nodo eventualmente con condizione di join
+        \item union node: unione degli n figli
+        \item construction node: rappresenta la sequenza di una proiezione seguita da un opzionale rinomina
+        \item aggregation node: definito dall'insieme di variabili su cui viene eseguita l'aggregazione e una sostituzione per definire le nuove variabili ricavate dalle funzioni di aggregazione
+        \item slice node: contiene un limite e/o un offset usati per eliminare un certo numero di tuple dal risultato
+        \item distinct node: mantiene una singola occorrenza per ogni tupla
+        \item order by node: ordine le tupe presenti in base ad una lista di comparatori. I valori vengono ordinati in base al primo comparatore e, solo in caso di valori uguali, viene usato il secondo comparatore e così via
+            L'operatore segue una semantica NULL FIRST ASC / NULL LAST DESC 
+    \end{itemize} \cite{IQ}
 
-IQ: rappresentazione usata per tradurre le query degli utenti in SPARQL nelle query SQL dei mapping
+\begin{comment}
+Formalmente quest'algebra è definita come:
+\begin{equation}
+    \begin{split}
+        \phi := &P(t) \ | \ PROJ_\tau^x \ \phi \ \ | \ AGG_\tau^x \ \phi \ \ | \  DISTINCT \ \phi \ \ | \ ORDERBY_x \ \phi \ \ | \\
+                &SLICE_i,j \ \phi \ \ |\ FILTER_\beta \ \phi \ \ | \ JOIN_\beta (\phi_1, \dots, \phi_k ) \ | \\
+                &LEFTJOIN_\beta(\phi_1, \phi_2) \ | \ UNION(\phi_1, \dots, \phi_k ) 
+    \end{split}
+\end{equation}
+dove $P$ è il nome di una relazione, $t$ è una tupla di termini, $x$ è una tupla di variabili, $\tau$ è una sostituzione, $i,j$ sono numeri naturali che descrivono il limite e l'offset e $\beta$ è un termine booleano.
+\end{comment}
+    
+Nonostante la maggior parte del processamento della query sia poi lasciato al DBMS (Ontop modella ogni dialetto individualmente usando Java factory specifiche per ogni dialetto), IQ si occupa di tradurre aspetti della query SPARQL nel loro equivalente SQL. Questo è scontato per alcuni costrutti dove sia sintassi che 
+semantica sono consistenti, mentre per altri i due linguaggi hanno comportamenti diversi. Di seguito si elencano alcune delle differenze principali tra i due linguaggi: \cite{Ontop}
+\begin{itemize}
+    \item tipizzazione: SQL è staticamente tipizzato ovvero tutti i valori in una colonna devono essere dello stesso tipo mentre SPARQL usa tipi dinamici. Questo significa che in SPARQL una funzione può accettare tipi diversi mentre questi
+        sono fissi in SQL (ad esempio numeric\_add)
+    \item ordinamento: SPARQL deve definire un ordine predefinito per IRI, blank nodes, variabili e letterali mentre in SQL è solamente necessario scegliere il modificato e specificare l'rodine per NULL
+    \item condizione di join: al fine di effettuare un join in SPARQL i due mapping devono essere compatibili ovvero devono condividere la stessa variabile o lo stesso termini RDF (e quindi hanno la stesso tipo e valore lessicale). Per quanto 
+        riguarda SQL invece non è necessario che gli argomenti siano dello stesso tipo e possono anche avere valori lessicali diversi (ad esempio timestamps con diversi fusi orari)
+    \item dialetti: mentre SPARQL ha sintassi e semantica standard, SQL è vendor-specific 
+\end{itemize}
+In particolare Ontop modella ogni dialetto individualmente usando Java factory specifiche per ogni dialetto ovvero modella i tipi, le convenzioni nei nomi di attributi e tabelle, la semantica delle funzioni, la struttura dei data catalog, \dots individualmente per ogni dialetto. 
 
 \subsection{Esempi di utilizzo}
-Esempi di utilizzo di Ontop in ambienti aziendali e accademici
-
+Data la distribuzione di Ontop come progetto open-source con licenza Apache2 è impossibile conoscerne tutti i casi di utilizzo. Nonostante ciò esistono comunque casi documentati di uso di questo VGK system sia in ambito commerciale che pubblico.
+\subsubsection*{Open Data Hub-Virtual-Knowledge-Graph}
+Open Data Hub-Virtual Knowledge Graph nasce come un progetto congiunto tra il NOI Techpark e Ontopic al fine di pubblicare e rendere disponibili i dati del'Alto Adige su turismo e mobilità. Inizialmente questi dati erano accessibili attraverso un'API JSON, ma l'introduzione di un VKG, con annesso endopoint SPARQL, ha
+reso questo sistema estremamente più potente e flessibile.
+\subsubsection*{UNiCS}
+UNiCS è una piattaforma sviluppata da SIRIS Academin che integra dati provenienti fonti come la commissione europea, governi nazionali e regionali e specifiche università al fine di aiutare università ed istituti di ricerca nel prendere scelta informate. Tutti questi dati sono disponibili tramite un'ontologia che può 
+essere interrogata tramite un endpoint SPARQL e i risultati possono poi essere visualizzati tramite grafiche e statistiche di più facile interpretazione \cite{UniCS}.
 
