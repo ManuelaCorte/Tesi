@@ -1,114 +1,100 @@
-\documentclass[a4paper,12pt,openright,notitlepage,oneside]{book}
-\raggedbottom % leave blank space at the end of the pages instead to adapt them
-
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-% packages
-\usepackage[utf8]{inputenc}				% encoding of the input
-\usepackage[italian]{babel} 			% document language
-\usepackage[headheight=15pt]{geometry} 	% margins definition
-\geometry{a4paper,top=30mm,bottom=30mm,left=30mm,right=25mm,heightrounded,bindingoffset=3mm}
-\usepackage[dvipsnames]{xcolor}
-\usepackage{graphicx} 					% for the figure
-\usepackage{fancyhdr} 					% manage header and footer 
-	\pagestyle{fancy}
-
-\usepackage{emptypage} 					% to create empty pages
-\usepackage[pdftex]{hyperref} 			% for interactive links
-	\hypersetup{colorlinks=true,allcolors=black}
-\usepackage{microtype} 					% enhanced text writing
-\usepackage{appendix} 					% to personalize the appendix
-\usepackage{mathtools} 					% math equations (load also AMSMATH)
-\usepackage{booktabs} 					% enhance table layout
-\usepackage{multirow} 					% enable multi rows in the tables
-\usepackage{multicol}					% enable multi columns in the tables
-\usepackage{pgfplotstable} 				% table from file with tabular data
-\usepackage{graphicx} 					% for the figure
-\usepackage{tikz} 						% for drawing
-\usepackage{pgfplots} 					% for the plot
-	\pgfplotsset{compat=1.14}
+%\documentclass[epsfig,a4paper,11pt,titlepage,twoside,openany]{book}
+\documentclass[a4paper,12pt,titlepage,twoside,openany]{book}
+\usepackage{epsfig}
+\usepackage{plain}
+\usepackage{setspace}
+\usepackage[paperheight=29.7cm,headheight=15pt,paperwidth=21cm,outer=1.5cm,inner=2.5cm,top=2cm,bottom=2cm]{geometry} % per definizione layout
+\usepackage{titlesec} % per formato custom dei titoli dei capitoli
+\usepackage[utf8x]{inputenc} % supporto lettere accentate
+\usepackage{graphicx}
+\usepackage[italian]{babel}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{amssymb} 
+\usepackage{cite} 
+\usepackage{mathtools} 	
+\usepackage{microtype}
 \usepackage{subcaption} 				% enable subcaption (load also CAPTION)
 	\captionsetup{font=small,labelsep=period,format=hang,tableposition=top,figureposition=bottom}
-\usepackage{tocloft} 					% enhance list of figure and table
-\usepackage{cite} 						% enable citation from bibliography
-\usepackage{amsmath}       				% assumes amsmath package installed
-\usepackage{amssymb}       				% assumes amsmath package installed
-\usepackage{overpic}
-\usepackage{gensymb}
-\usepackage{wrapfig}
-\usepackage{afterpage}
-\usepackage{color,soul}
-\usepackage{tabto}
-\usepackage{etoolbox}
-\usepackage{placeins}
-\usepackage{pdfpages}					% to include pdf pages from other files
-\usepackage{verbatim}
-\usepackage{fancyvrb}					% set of packages useful to insert code
-\usepackage{fvextra}					% -
-\usepackage{listings}					% -
+\usepackage{fancyhdr} 					% manage header and footer 
+	
 
-% path for the images
+\usepackage[pdftex]{hyperref} 			% for interactive links
+	\hypersetup{colorlinks=true,allcolors=black}
+
+\singlespacing
 \graphicspath{ {./images/} }
 
 \begin{document}
 
+% nessuna numerazione
+\pagenumbering{gobble}
+\pagestyle{plain}
 
-% Front matter
-\frontmatter
-\thispagestyle{empty} 	% remove all pages setup
-\begin{center}
-{\LARGE \bf UNIVERSITÀ DEGLI STUDI}\\ \vspace{0.25cm}
-{\LARGE \bf  DI TRENTO}
-\vspace{-2mm}\rule{\textwidth}{0.4pt}\\[0.5cm]
-
-{\Large Dipartimento di Ingegneria e Scienze dell'Informazione}\\[5pt]
-{\Large Corso di laurea in informatica }\\[0.8cm]
+\thispagestyle{empty}
 
 \begin{center}
-	\includegraphics[scale = 0.35]{logo.png}
+  \begin{figure}[h!]
+    \centerline{\psfig{file=marchio_unitrento_colore_it_202002.eps,width=0.6\textwidth}}
+  \end{figure}
+
+  \vspace{2 cm}
+
+  \LARGE{Dipartimento di Ingegneria e Scienza dell’Informazione\\}
+
+  \vspace{1 cm}
+  \Large{Corso di Laurea in Informatica}
+
+  \vspace{2 cm}
+  \Large\textsc{Elaborato finale\\}
+  \vspace{1 cm}
+  \Huge\textsc{Titolo\\}
+  \Large{\it{Sottotitolo (alcune volte lungo - opzionale)}}
+
+
+  \vspace{2 cm}
+  \begin{tabular*}{\textwidth}{ c @{\extracolsep{\fill}} c }
+    \Large{Prof. Bouquet Paolo} & \Large{Corte Pause Manuela}\\
+  \end{tabular*}
+
+  \vspace{2 cm}
+
+  \Large{Anno accademico 2021/2022}
+
 \end{center}
-
-\vspace{1.7cm}
-{\Large  Elaborato finale}\\[1cm] 
-{\Large \bf TITOLO}\\ \vspace{0.25cm}
-{\Large \bf ELEBORATO}\\[3cm] 
+\clearpage
 
 
-\centering
-\begin{tabular}{ll}
-	\textbf{Supervisore:}      			\hspace{3cm}       	& \textbf{Laureando:}\\[5pt]
-    \textit{Prof. Bouquet Paolo}     \hspace{5cm}       	& \textit{Corte Pause Manuela}\\[2pt]
-															&
-\end{tabular}\\
-\vfill
-\rule{\textwidth}{0.4pt}\\[5pt]
-
-{\large Anno Accademico 2021/2022}\\[0.2cm]
-\end{center}
-
-% Acknowledgements
-%\input{chapters/acknowledgements}
-%\cleardoublepage
-
-
-% Index 
-\phantomsection
-\tableofcontents
-\cleardoublepage
-
-% Chapters
+% inizio numerazione pagine in numeri arabi
 \mainmatter
-\fancyhead[L]{}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[RO]{\leftmark}
+%\fancyhead[LE]{\leftmark}
+%\fancyfoot[C]{number}
+%\fancypagestyle{plain}% you can add edits that won't affect "fancy" but only "plain"
+
+% indice
+\tableofcontents
+\clearpage
+
+% definizione titoli in forma "numero capitolo titolo capitolo"
+\titleformat{\chapter}
+{\normalfont\Huge\bfseries}{\thechapter}{1em}{}
+
+\titlespacing*{\chapter}{0pt}{0.59in}{0.02in}
+\titlespacing*{\section}{0pt}{0.20in}{0.02in}
+\titlespacing*{\subsection}{0pt}{0.10in}{0.02in}
+
+% lista dei capitoli
 \input{chapters/introduction.tex}
+\addcontentsline{toc}{chapter}{Sommario}
 \input{chapters/vkg.tex}
 \input{chapters/experience.tex}
 \input{chapters/conclusions}
 
-
-% Bibliography
-
-%\nocite{*}
-\bibliographystyle{plain}  
-\bibliography{bibliography.bib}  
-
+%bibliografia
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
+\addcontentsline{toc}{chapter}{Bibliografia}
 \end{document}
