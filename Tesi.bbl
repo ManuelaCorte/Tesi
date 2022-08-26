@@ -39,6 +39,11 @@ Shaoxiong Ji, Shirui Pan, Erik Cambria, Pekka Marttinen, and S~Yu Philip.
 \newblock {\em IEEE Transactions on Neural Networks and Learning Systems},
   33(2):494--514, 2021.
 
+\bibitem{JSqlParser}
+JSqlParser.
+\newblock Jsqlparser sourceforge.
+\newblock \url{http://jsqlparser.sourceforge.net/}.
+
 \bibitem{dataIntegrationDef}
 Maurizio Lenzerini.
 \newblock Data integration: A theoretical perspective.
@@ -50,6 +55,11 @@ Ontop.
 \newblock Intermediate query (iq).
 \newblock \url{https://ontop-vkg.org/dev/internals/iq.html}.
 
+\bibitem{OntopicStudio}
+Ontopic.
+\newblock Ontopic studio.
+\newblock \url{https://ontopic.ai/en/ontopic-studio/}.
+
 \bibitem{DataIntegrationHistory}
 SAP.
 \newblock What is data integration?
@@ -60,6 +70,12 @@ Bhavana Sayiram.
 \newblock Importance of data integration in the data decade.
 \newblock
   \url{https://education.dellemc.com/content/dam/dell-emc/documents/en-us/2021KS_Sayiram-Data_Integration.pdf}.
+
+\bibitem{Ontopic}
+Unibz.
+\newblock Ontopic. nasce il primo spin-off di unibz.
+\newblock
+  \url{https://www.unibz.it/it/news/132449-ontopic-nasce-il-primo-spin-off-di-unibz}.
 
 \bibitem{UniCS}
 UNiCS.
