@@ -60,6 +60,16 @@ Ontopic.
 \newblock Ontopic studio.
 \newblock \url{https://ontopic.ai/en/ontopic-studio/}.
 
+\bibitem{PGLimit}
+PostgreSQL.
+\newblock Limit and offset.
+\newblock \url{https://www.postgresql.org/docs/14/queries-limit.html}.
+
+\bibitem{PGDistinct}
+PostgreSQL.
+\newblock Select lists.
+\newblock \url{https://www.postgresql.org/docs/14/queries-select-lists.html}.
+
 \bibitem{DataIntegrationHistory}
 SAP.
 \newblock What is data integration?
@@ -70,6 +80,11 @@ Bhavana Sayiram.
 \newblock Importance of data integration in the data decade.
 \newblock
   \url{https://education.dellemc.com/content/dam/dell-emc/documents/en-us/2021KS_Sayiram-Data_Integration.pdf}.
+
+\bibitem{Fetch}
+sqltutoria.org.
+\newblock Sql fetch.
+\newblock \url{https://www.sqltutorial.org/sql-fetch/}.
 
 \bibitem{Ontopic}
 Unibz.

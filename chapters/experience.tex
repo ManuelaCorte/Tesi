@@ -3,24 +3,24 @@
 
 \section{Ontopic}
 \label{sec:ontopic}
-Il tirocinio da me svolto è avvenuto presso l'azienda Ontopic s.r.l. Tale azienda è nata nel 2019 come spin-off della Libera Università di Bolzano dal prof. Diego Calvanese insieme al professore Marco Montali, i ricercatori Guohui Xiao e Benjamin Cogrel 
+Il tirocinio da me svolto è avvenuto presso l'azienda Ontopic s.r.l. Tale azienda è nata nel 2019 come spin-off della Libera Università di Bolzano dal prof. Diego Calvanese insieme al professore Marco Montali, i ricercatori Guohui Xiao e Benjamin Cogrel
 e l’amministratore delegato Peter Hopfgartner presso il NOI Techpark di Bolzano\cite{Ontopic}.
 
 L'azienda nasce con lo scopo di proporre soluzioni di data integration ed in particolare basate sull'integrazione semantica come i Virtual Knowledge Graph. Ontopic fornisce sia consulenza diretta ad aziende con soluzioni ad-hoc
-per integrazione ed analisi dati che una soluzione proprietaria per il mapping di VKG chiamata Ontopic Studio. Questo applicativo è basato sul Knowledge Graph system Ontop, di cui Ontopic è uno dei principali contributori, e permette di realizzare mapping 
-in modo efficiente tramite un interfaccia grafica no-code semplice che ne permette quindi l'uso anche a persone senza un background in tecniche semantiche. \cite{OntopicStudio}    
+per integrazione ed analisi dati che una soluzione proprietaria per il mapping di VKG chiamata Ontopic Studio. Questo applicativo è basato sul Knowledge Graph system Ontop, di cui Ontopic è uno dei principali contributori, e permette di realizzare mapping
+in modo efficiente tramite un interfaccia grafica no-code semplice che ne permette quindi l'uso anche a persone senza un background in tecniche semantiche. \cite{OntopicStudio}
 
 \section{Il modulo bi-connector}
 \label{sec:bi-connector}
 Durante la mia esperienza di tirocinio presso Ontopic, ho lavorato all'interno del progetto del bi-connector. Tale modulo ha lo scopo di permettere all'utente finale di ricavare informazioni su un VKG non solo tramite query SPARQL, come di consuetudine, ma anche
-tramite strumenti di Business Intelligence (BI) come Tableau, PowerBi o Qlik. 
-Mentre questi applicativi presentano nativamente connettori verso molteplici fonti di dati tra cui: la maggior parte dei database relazionali, database NoSQL come MongoDB, fogli Excel, 
+tramite strumenti di Business Intelligence (BI) come Tableau, PowerBi o Qlik.
+Mentre questi applicativi presentano nativamente connettori verso molteplici fonti di dati tra cui: la maggior parte dei database relazionali, database NoSQL come MongoDB, fogli Excel,
 dati in formato JSON, file PDF, connessioni personalizzate tramite JDBC o ODBC, \dots, non forniscono invece connettori nativi per i VKG ed è proprio per questo che nasce bi-connector.
 
 \begin{comment}{}
-    In particolare, il primo applicativo di business intelligence su quale si è focalizzato lo sforzo di sviluppo è stato Tableau e perciò nel resto dell'elaborato farò principalmente riferimento a questo.
+In particolare, il primo applicativo di business intelligence su quale si è focalizzato lo sforzo di sviluppo è stato Tableau e perciò nel resto dell'elaborato farò principalmente riferimento a questo.
 \end{comment}
-Possiamo pensare a bi-connector come costituito di due parti principali: una che si occupa della costruzione di un database a partire dall'ontologia che possa essere connesso al strumento di BI target e una seconda parte che ha il compito di tradurre le query 
+Possiamo pensare a bi-connector come costituito di due parti principali: una che si occupa della costruzione di un database a partire dall'ontologia che possa essere connesso al strumento di BI target e una seconda parte che ha il compito di tradurre le query
 SQL sul database in una forma comprensibile dal VKG sottostante.
 
 \subsection{Creazione database}
@@ -36,13 +36,13 @@ Da estendere chiedendo a Benjamin
 \`E possibile interrogare il database inizialmente creato tramite query SQL, ma queste devono poi essere tradotte in una rappresentazione comprensibile dal VKG sottostante. Questo perché le query non sono eseguite sul database da noi creato, ma sul
 Virtual Knowledge Graph originale così da poterne sfruttare le capacità di inferenza.
 
-In quanto il VKG system utilizzato è Ontop, le query SQL vengono tradotte in un albero IQ, descritto precedentemente anche nella sezione \ref{sec:ontop_iq}. 
+In quanto il VKG system utilizzato è Ontop, le query SQL vengono tradotte in un albero IQ, descritto precedentemente anche nella sezione \ref{sec:ontop_iq}.
 
 Inizialmente, le query delle quali era possibile fare il parsing erano quasi esclusivamente del tipo SELECT-JOIN-WHERE, ovvero un'unione di query congiuntive. Questo era dovuto al fatto che il parser SQL in uso era quello nativo di Ontop,
 il quale ha come scopo principale la traduzione dei mapping che sono, nella maggior parte dei casi, rappresentabili tramite questo tipo di semplici query.
-A causa di questa limitazione moltissime delle query generate automaticamente da strumenti di Business Intelligence dovevano essere riscritte in una forma semplifica per poter essere eseguite. 
+A causa di questa limitazione moltissime delle query generate automaticamente da strumenti di Business Intelligence dovevano essere riscritte in una forma semplifica per poter essere eseguite.
 Di seguito un esempio di ciò in cui la query è semplificata eliminando il LEFT JOIN e l'ORDER BY in quanto non supportati.
-\begin{lstlisting}
+\begin{verbatim}
     SELECT n.oid, n.*, d.description 
     FROM pg_catalog.pg_namespace n
     LEFT OUTER JOIN pg_catalog.pg_description d ON d.objoid=n.oid 
@@ -51,10 +51,10 @@ Di seguito un esempio di ciò in cui la query è semplificata eliminando il LEFT
 diventa:
     SELECT n.* 
     FROM pg_catalog.pg_namespace n;
-\end{lstlisting}
+\end{verbatim}
 
 Date queste limitazioni del parser originale, si è deciso di adottarne uno diverso ovvero JSqlParser. JSqlParser è un parser di istruzioni SQL
-che trasforma una query in una gerarchia di classi Java. \`E basato sul visitor pattern il quale permette di separare in modo semplice un algoritmo dalla struttura dati sulla quale è utilizzato. 
+che trasforma una query in una gerarchia di classi Java. \`E basato sul visitor pattern il quale permette di separare in modo semplice un algoritmo dalla struttura dati sulla quale è utilizzato.
 In particolare tale pattern rappresenta un'operazione che deve essere eseguita su un insieme eterogeneo di oggetti e, per ognuno di questi, potrebbe dover essere implementata in modo differente \cite{JSqlParser}.
 
 \section{Prime attività}
@@ -62,97 +62,149 @@ In particolare tale pattern rappresenta un'operazione che deve essere eseguita s
 La prima attività svolta all'interno del tirocinio è stata quella di familiarizzare con le tecnologie legate ai VKG che mi sarebbero servite in seguito. In particolare ho svolto
 il tutorial introduttivo ad Ontop tramite la piattaforma Protege così da provare direttamente cosa si intende per tradurre fonti di dati in un'ontologia tramite mapping. (Forse non mettere)
 
-Il mio compito principale è stato quello di estendere il parser SQL in uso così da supportare un numero maggiore di costrutti. Come affermato anche precedentemente, il parser inizialmente utilizzato era 
+Il mio compito principale è stato quello di estendere il parser SQL in uso così da supportare un numero maggiore di costrutti. Come affermato anche precedentemente, il parser inizialmente utilizzato era
 esclusivamente in grado di tradurre semplici query il che risultava essere insufficiente affinché potesse essere usato in modo non banale da strumenti bi Business Intelligence.
 
-Ho quindi studiato quali fossero i costrutti maggiormente presenti nelle query generate automaticamente dagli strumenti di BI, di cui un esempio sopra nella sezione \ref{sec:bi-connector_parsing}. Tra questi 
-i principali erano sicuramente il GROUP BY per l'aggregazione, dato anche lo scopo degli strumenti di BI di fornire informazioni riassuntive d'insieme sull'intero dataset, e l'ORDER BY che 
+Ho quindi studiato quali fossero i costrutti maggiormente presenti nelle query generate automaticamente dagli strumenti di BI, di cui un esempio sopra nella sezione \ref{sec:bi-connector_parsing}. Tra questi
+i principali erano sicuramente il GROUP BY per l'aggregazione, dato anche lo scopo degli strumenti di BI di fornire informazioni riassuntive d'insieme sull'intero dataset, e l'ORDER BY che
 permette una visualizzazione indipendente da come i dati sono salvati, ma che dipende da parametri arbitrari.
 
-\subsection*{Database per il testing}
-Durante la durata del tirocinio, tutte le funzionalità implementate sono state testate su un semplice VKG con un database relazionale H2 come sorgente. I test sono stati eseguiti sia all'interno della codebase
-stessa grazie al framework JUnit che tramite il client SQL DBeaver che ha permesso la visualizzazione del database PostgreSQL creato dal bi-connector e la sua interrogazione diretta. 
-Di seguito si descrivono le tabelle (\ref{tab:prof} \ref{tab:profstats}, \ref{tab:course}, \ref{tab:teaching}) di questo database che saranno quelle a cui si farà riferimento in tutti i frammenti di codice successivi.
-        \begin{table}
-            \caption{Tabella prof}
-            \label{tab:prof}
-            \centering
-            \begin{tabular}{ | c | c | c | }
-                \hline
-                id                                         & fName   & lName   \\ \hline
-                http://university.example.org/professor/10 & Roger   & Smith   \\ \hline
-                http://university.example.org/professor/20 & Frank   & Pitt    \\ \hline
-                http://university.example.org/professor/30 & John    & Deep    \\ \hline
-                http://university.example.org/professor/40 & Micheal & Jackson \\ \hline
-                http://university.example.org/professor/50 & Diego   & Gamper  \\ \hline
-                http://university.example.org/professor/60 & Johann  & Helmer  \\ \hline
-                http://university.example.org/professor/70 & Barbare & Dodero  \\ \hline
-                http://university.example.org/professor/80 & Mary    & Poppins \\ \hline
-            \end{tabular}
-        \end{table}
+\subsection{Database per il testing}
+Durante la durata del tirocinio, tutte le funzionalità implementate sono state testate su un semplice VKG con un database relazionale H2 come sorgente che rappresenta alcune informazioni riguardanti professori universitari.
+I test sono stati eseguiti sia all'interno della codebase stessa grazie al framework JUnit che tramite il client SQL DBeaver che ha permesso la visualizzazione del database PostgreSQL creato dal bi-connector e la sua
+interrogazione diretta.
+Di seguito si descrivono le tabelle (\ref{tab:prof} \ref{tab:profstats}, \ref{tab:course}, \ref{tab:teaching}) di questo database che sono inoltre quelle a cui si farà riferimento in tutti i frammenti di codice successivi.
+\begin{table}
+    \caption{Tabella prof}
+    \label{tab:prof}
+    \centering
+    \begin{tabular}{ | c | c | c | }
+        \hline
+        id                                         & fName   & lName   \\ \hline
+        http://university.example.org/professor/10 & Roger   & Smith   \\ \hline
+        http://university.example.org/professor/20 & Frank   & Pitt    \\ \hline
+        http://university.example.org/professor/30 & John    & Deep    \\ \hline
+        http://university.example.org/professor/40 & Micheal & Jackson \\ \hline
+        http://university.example.org/professor/50 & Diego   & Gamper  \\ \hline
+        http://university.example.org/professor/60 & Johann  & Helmer  \\ \hline
+        http://university.example.org/professor/70 & Barbare & Dodero  \\ \hline
+        http://university.example.org/professor/80 & Mary    & Poppins \\ \hline
+    \end{tabular}
+\end{table}
 
-        \begin{table}
-            \caption{Tabella prof\_stats}
-            \label{tab:profstats}
-            \centering
-            \begin{tabular}{| c | c | c |}
-                \hline
-                profId                                     & totalStudents & countCourse \\ \hline
-                http://university.example.org/professor/10 & 21            & 2           \\ \hline
-                http://university.example.org/professor/30 & 12            & 1           \\ \hline
-                http://university.example.org/professor/80 & 13            & 1           \\ \hline
-            \end{tabular}
-        \end{table}
+\begin{table}
+    \caption{Tabella prof\_stats}
+    \label{tab:profstats}
+    \centering
+    \begin{tabular}{| c | c | c |}
+        \hline
+        profId                                     & totalStudents & countCourse \\ \hline
+        http://university.example.org/professor/10 & 21            & 2           \\ \hline
+        http://university.example.org/professor/30 & 12            & 1           \\ \hline
+        http://university.example.org/professor/80 & 13            & 1           \\ \hline
+    \end{tabular}
+\end{table}
 
-        \begin{table}
-            \caption{Tabella course}
-            \label{tab:course}
-            \centering
-            \begin{tabular}{| c | c | c |}
-                \hline
-                id                                                       & duration & nbStudents \\ \hline
-                http://university.example.org/course/LinearAlgebra	     & 24.5	    & 10         \\ \hline
-                http://university.example.org/course/DiscreteMathematics & 30	    & 11         \\ \hline
-                http://university.example.org/course/AdvancedDatabases	 & 20	    & 12         \\ \hline
-                http://university.example.org/course/ScientificWriting	 & 18	    & 13         \\ \hline
-            \end{tabular}
-        \end{table}  
+\begin{table}
+    \caption{Tabella course}
+    \label{tab:course}
+    \centering
+    \begin{tabular}{| c | c | c |}
+        \hline
+        id                                                       & duration & nbStudents \\ \hline
+        http://university.example.org/course/LinearAlgebra       & 24.5     & 10         \\ \hline
+        http://university.example.org/course/DiscreteMathematics & 30       & 11         \\ \hline
+        http://university.example.org/course/AdvancedDatabases   & 20       & 12         \\ \hline
+        http://university.example.org/course/ScientificWriting   & 18       & 13         \\ \hline
+    \end{tabular}
+\end{table}
 
-        \begin{table}
-            \caption{Tabella teaching}
-            \label{tab:teaching}
-            \centering
-            \begin{tabular}{| c | c | }
-                \hline
-                teacher                                     & course                                                    \\ \hline
-                http://university.example.org/professor/30	& http://university.example.org/course/AdvancedDatabases    \\ \hline
-                http://university.example.org/professor/10  & http://university.example.org/course/DiscreteMathematics  \\ \hline   
-                http://university.example.org/professor/10	& http://university.example.org/course/LinearAlgebra        \\ \hline
-                http://university.example.org/professor/80  & http://university.example.org/course/ScientificWriting    \\ \hline
-            \end{tabular}
-        \end{table}
-Inoltre, dato il fatto che ogni DBMS tende ad avere un proprio dialetto SQL, è stato molto importante assicurarsi che i costrutti da me implementati ricalcassero il  
-comportamento presente in PostgreSQL e, nel caso ciò non fosse possibile, fornire messaggi d'errore di facile comprensione. Al fine di fare ciò, ho consultato spesso 
-la documentazione di PostgreSQL e, per test più pratici, ho usato DBFiddle, uno strumento online per testare in modo veloce, e senza bisogno di alcun setup, 
-frammenti di codice SQL.
+\begin{table}
+    \small
+    \caption{Tabella teaching}
+    \label{tab:teaching}
+    \centering
+    \begin{tabular}{| c | c | }
+        \hline
+        teacher                                    & course                                                   \\ \hline
+        http://university.example.org/professor/30 & http://university.example.org/course/AdvancedDatabases   \\ \hline
+        http://university.example.org/professor/10 & http://university.example.org/course/DiscreteMathematics \\ \hline
+        http://university.example.org/professor/10 & http://university.example.org/course/LinearAlgebra       \\ \hline
+        http://university.example.org/professor/80 & http://university.example.org/course/ScientificWriting   \\ \hline
+    \end{tabular}
+\end{table}
+Inoltre, dato il fatto che ogni DBMS tende ad avere un proprio dialetto SQL, è stato molto importante assicurarsi che i costrutti da me implementati ricalcassero il
+comportamento presente in PostgreSQL e, nel caso ciò non fosse possibile, fornire messaggi d'errore di facile comprensione. Ad esempio, la funzione \textit{concat()}
+è null-rejecting, ovvero tutti gli argomenti pari a NULL sono ignorati, mentre in altri dialetti, come ad esempio MySQL, se uno degli argomenti è NULL allora il risultato
+della concatenazione è anch'esso NULL.
+Al fine di ottenere ciò, ho utilizzato la documentazione di PostgreSQL e, per test più pratici, ho usato DBFiddle, uno strumento online per testare in modo veloce, e
+senza bisogno di alcun setup, frammenti di codice SQL.
 
 
 \section{Costrutti implementati}
 \label{sec:implementation}
+La struttura usata per il parsing è basata sulla classe \textit{IQTreeExpression.java} la quale è composta da:
+\begin{itemize}
+    \item IQTree: albero composto di nodi IQ che viene costruito partendo dalle foglie e viene esteso aggiungendo nuovi nodi come radici dell'albero stesso. Da un punto di vista
+          più pratico abbiamo come foglie degli extensional node che rappresentano le tabelle elencate all'interno della query e al di sopra di esse sono presenti altri nodi che
+          rappresentano le varie operazioni eseguite.
+    \item RAExpressionAttributes: dizionario che contiene le colonne delle tabelle coinvolte nella query e tutti gli alias ad esse associati. Per alias si intendono i nomi definiti
+          dall'utente tramite la keyword AS o come nome di una tabella e quelli definiti internamente al codice al fine di assicurarne l'univocità.
+\end{itemize}
+Di seguito un esempio di un IQTreeExpression generato dalla query
+\begin{verbatim}
+    SELECT "id", "fName", "lName"
+    FROM prof p
+
+    IQTreeExpression{
+        iqTree = EXTENSIONAL "prof_views"."prof"(0:id1,1:fName1,2:lName1), 
+        raExpressionAttributes=attributes: {"id"=id1, p."id"=id1, 
+            "fName"=fName1, p."fName"=fName1, "lName"=lName1, p."lName"=lName1} 
+            with {"id"=[p], "fName"=[p], "lName"=[p]}
+    } 
+    \end{verbatim}
 
 \subsection{Modificatori di cardinalità}
+I primi costrutti da essere implementati sono stati quelli responsabili della modifica della cardinalità di una tabella ovvero DISTINCT e LIMIT-OFFSET. La loro implementazione
+risulta essere abbastanza semplice da un punto di vista logico, ma ciò mi ha permesso di acquisire familiarità con la codebase preesistente e con librerie esterne come JSqlParser
+in modo più rapido dato che l'implementazione dei costrutti non aveva logiche complesse.
 
+\subsubsection*{DISTINCT}
+Il costrutto DISTINCT permette di eliminare righe duplicate ed è stato implementato aggiungendo un nodo IQ di tipo distinct.
 
-Distinct implementato tramite un semplice IQ node Distinct
-Limit e Offset implementati con un filtro
-Interessanti principalmente in quanto sono stati un primo approccio sia alle struttura generale del progetto / IQTree che a JSqlParser più che come funzionalità complesse da implementare.
+La clausola DISTINCT ON non è stata invece implementata in quanto non parte dello standard SQL, ma fornita da PostgreSQL. Inoltre non è stata considerata fondamentale in qunato
+può essere rimpiazzata tramite l'uso di una subquery o in alcuni casi anche tramite aggregazione \cite{PGDistinct}.
+\subsubsection*{LIMIT e OFFSET}
+Le clausole LIMIT e OFFSET permettono di restringere il numero di righe restituite da una query e di saltare le prime $n$ righe quando queste vengono restituire rispettivamente.
+Data le loro funzionalità complementari sono spesso usate insieme anche se è possibile usare singolarmente
+Ad esempio la forma \verb+LIMIT 5 OFFSET 2+ ritorna le prime 5 righe dopo che sono state saltate le prime 2.
+
+Anche se supportata dalla maggior parte dei DBMS, e quindi ampiamente usata, la clausola LIMIT non fa parte dello standard SQL. Una possibile alternativa standardizzata è l'utilizzo
+della keyword FETCH la cui sintassi è \verb+FETCH { FIRST | NEXT } [ fetch_rows ] { ROW | ROWS }+ \verb+ONLY+ dove FIRST/NEXT e ROW/ROWS sono sinonimi e possono quindi essere usati
+in modo intercambiabile \cite{Fetch}.
+
+Al fine di implementarne la funzionalità, indipendentemente se per LIMIT o per FETCH, è stato usato uno slice node il quale permette di specificare esclusivamente un offset o sia
+un limite che un offset.
+
+Inoltre, quando si utilizza LIMIT è consigliato aggiungere anche un ORDER BY che forza un ordine alle righe altrimenti il risultato non è garantito che il risultato sia lo stesso per
+esecuzioni successive della stessa query \cite{PGLimit}.
 
 \subsection{Ordinamento righe}
-Order by più complesso in quanto richiede la creazione di comparatori, operazioni di sostituzione per la proiezione delle variabili 
+La keyword ORDER BY permette riordinare le righe risultanti da una query in base a specifiche condizioni, sia in modo ascendente che discendente.
+
+L'implementazione dell'ORDER BY è risultata essere relativamente complessa in quanto può essere usata su un'ampia casistica. Ad esempio si può avere uno o più criteri di ordinamento e
+ognuno di essi può essere una colonna o una funzione. Inoltre ognuno per ognuno di questi è necessario decidere se l'ordinamento avviene in modo ascendete o discendente e come debbano
+essere ordinati i valori pari a NULL.
+
+Order by più complesso in quanto richiede la creazione di comparatori, operazioni di sostituzione per la proiezione delle variabili
 e la gestione del NULL ordering.
 
+\`E inoltre possibile una forma del tipo \verb+ORDER BY _costante_numerica_+ dove la costante numerica presente viene utilizzata come indice della corrispondente colonna proiettata. Tale
+uso è scoraggiato in quanto il risultato potrebbe non essere deterministico se si va a cambiare la struttura del database stesso, ma è stato implementato ugualmente in quanto viene
+ampiamente usato nelle query generate in modo automatico da Tableau.
+
 \subsection{Combinazione tabelle}
-Cross e inner join già presenti, implementazione left join (scontato di conseguenza il right join) 
+Cross e inner join già presenti, implementazione left join (scontato di conseguenza il right join)
 Problematiche sorte su colonne con stessi nomi
 
 \subsection{Operazioni insiemistiche}
@@ -160,10 +212,10 @@ Operazioni su insiemi (unione e sottrazione) implementate con alcune restrizioni
 L'implementazione della sottrazione è interessante (implementata come filtro su un left join).
 
 \subsection{Aggregazione}
-Funzioni di aggregazione (SUM, COUNT, MIN, MAX, AVG) per cui è stato necessario introdurre una funzionalità che ritardasse l'assegnazione del 
+Funzioni di aggregazione (SUM, COUNT, MIN, MAX, AVG) per cui è stato necessario introdurre una funzionalità che ritardasse l'assegnazione del
 tipo alla funzione. (Questo perché SPARQL a differenza di SQL usa una tipizzazione dinamica).
 Costrutto Group by e having (interessante l'implementazione per funzioni con la sostituzione dei functional term con variabili)
 
 \section{Risultati ottenuti}
-Con l'introduzione dell'aggregazione (e anche dell'order by) è stato possibile rimuovere buona parte delle query automaticamente create da Tableau --> accesso a Tableau 
+Con l'introduzione dell'aggregazione (e anche dell'order by) è stato possibile rimuovere buona parte delle query automaticamente create da Tableau --> accesso a Tableau
 e prime dashboard create su dataset non banali (chiedere a Benjamin se ha qualche screenshot)
