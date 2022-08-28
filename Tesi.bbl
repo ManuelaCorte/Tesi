@@ -70,6 +70,11 @@ PostgreSQL.
 \newblock Select lists.
 \newblock \url{https://www.postgresql.org/docs/14/queries-select-lists.html}.
 
+\bibitem{PGOrderBY}
+PostgreSQL.
+\newblock Sorting rows (order by).
+\newblock \url{https://www.postgresql.org/docs/14/queries-order.html}.
+
 \bibitem{DataIntegrationHistory}
 SAP.
 \newblock What is data integration?

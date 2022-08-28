@@ -19,9 +19,9 @@
 \contentsline {section}{\numberline {2.4}Costrutti implementati}{13}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Modificatori di cardinalit\IeC {\`a}}{13}{subsection.2.4.1}%
 \contentsline {subsection}{\numberline {2.4.2}Ordinamento righe}{14}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Combinazione tabelle}{14}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Operazioni insiemistiche}{14}{subsection.2.4.4}%
-\contentsline {subsection}{\numberline {2.4.5}Aggregazione}{14}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.3}Combinazione tabelle}{15}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Operazioni insiemistiche}{15}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Aggregazione}{15}{subsection.2.4.5}%
 \contentsline {section}{\numberline {2.5}Risultati ottenuti}{15}{section.2.5}%
 \contentsline {chapter}{\numberline {3}Conclusioni}{16}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Possibili sviluppi futuri}{16}{section.3.1}%

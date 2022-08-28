@@ -190,16 +190,45 @@ Inoltre, quando si utilizza LIMIT è consigliato aggiungere anche un ORDER BY ch
 esecuzioni successive della stessa query \cite{PGLimit}.
 
 \subsection{Ordinamento righe}
-La keyword ORDER BY permette riordinare le righe risultanti da una query in base a specifiche condizioni, sia in modo ascendente che discendente.
+La keyword ORDER BY permette riordinare le righe risultanti da una query in base a specifiche condizioni, sia in modo ascendente che discendente. Un altro aspetto importante è quello del 
+NULL ordering, ovvero come i valori NULL sono trattati al fine dell'ordinamento. In PostgreSQL i valori pari a NULL vengono considerati come maggiori di qualsiasi altro valore mentre questo 
+è l'opposto per gli IQ tree i quali seguono una semantica simile a quella di SPARQL. Quindi gli ordinamenti del tipo \verb+ORDER BY ASC NULLS LAST+ e \verb+ORDER BY DESC NULLS FIRST+ 
+non sono supportati \cite{PGOrderBY}. 
 
 L'implementazione dell'ORDER BY è risultata essere relativamente complessa in quanto può essere usata su un'ampia casistica. Ad esempio si può avere uno o più criteri di ordinamento e
-ognuno di essi può essere una colonna o una funzione. Inoltre ognuno per ognuno di questi è necessario decidere se l'ordinamento avviene in modo ascendete o discendente e come debbano
-essere ordinati i valori pari a NULL.
+ognuno di essi può essere una colonna o una funzione. Inizialmente il costrutto è stato implementato usando un order by node il quale richiede come argomento una lista di comparatori 
+dove ogni comparatore è costituito dal termine rispetto al quale si sta effettuando l'ordinamento e se quest'ultimo è ascendente o meno. 
 
-Order by più complesso in quanto richiede la creazione di comparatori, operazioni di sostituzione per la proiezione delle variabili
-e la gestione del NULL ordering.
+Una volta svolti i primi test, è subito emerso un problema riguardante la rinomina delle variabili in quanto una volta che ad una variabile veniva assegnato un alias si andava a perdere 
+quale fosse il nome della variabile originale. Quindi ad esempio un query del tipo:
+\begin{verbatim}
+    SELECT "fName" as v
+    FROM prof p 
+    ORDER BY "fName"
+\end{verbatim}
+avrebbe restituito un errore in quanto l'unica variabile presente a seguito della proiezione sarebbe stata \textit{v} e sarebbe quindi stato impossibile eseguire un ordinamento basato su 
+\textit{fName}.  
 
-\`E inoltre possibile una forma del tipo \verb+ORDER BY _costante_numerica_+ dove la costante numerica presente viene utilizzata come indice della corrispondente colonna proiettata. Tale
+Si è quindi deciso di estendere l'implementazione per supportare questo comportamento aggiungendo un construction node che proietta tutte le variabili e tiene traccia delle sostituzioni che 
+avvengono. Inoltre al fine di evitare collisioni tra gli attributi non proiettati, che vengono appunto mantenuti in questa versione, e gli alias, tutti gli attributi sono rinominati aggiungendo un 
+suffisso casuale al nome della variabile stessa. La query vista sopra produce questa IQTreeExpression: 
+\begin{verbatim}
+    IQTreeExpression{
+        iqTree=CONSTRUCT [v] []
+         ORDER BY [ASC(fName)]
+          CONSTRUCT [v, fName, fName1f1611f1-6d9d-4347-9c60-f51bbdc89a09, 
+            lName, lName0c931a3d-93fb-406c-b33c-6f4743af211c, id, 
+            idf859a5d9-d246-42a2-a62f-e722a1175dc4] [fName/v, 
+            idf859a5d9-d246-42a2-a62f-e722a1175dc4/id, 
+            lName0c931a3d-93fb-406c-b33c-6f4743af211c/lName, 
+            fName1f1611f1-6d9d-4347-9c60-f51bbdc89a09/v]
+           CONSTRUCT [id, v, lName] []
+            EXTENSIONAL "prof_views"."prof"(0:id,1:v,2:lName), 
+        raExpressionAttributes=attributes: {v=v} with {v=[]}
+    } 
+\end{verbatim}
+
+\`E inoltre possibile una forma del tipo \verb+ORDER BY numerical_constant+ dove la costante numerica presente viene utilizzata come indice della corrispondente colonna proiettata. Tale
 uso è scoraggiato in quanto il risultato potrebbe non essere deterministico se si va a cambiare la struttura del database stesso, ma è stato implementato ugualmente in quanto viene
 ampiamente usato nelle query generate in modo automatico da Tableau.
 
