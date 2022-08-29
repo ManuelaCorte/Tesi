@@ -63,11 +63,11 @@ La prima attività svolta all'interno del tirocinio è stata quella di familiari
 il tutorial introduttivo ad Ontop tramite la piattaforma Protege così da provare direttamente cosa si intende per tradurre fonti di dati in un'ontologia tramite mapping. (Forse non mettere)
 
 Il mio compito principale è stato quello di estendere il parser SQL in uso così da supportare un numero maggiore di costrutti. Come affermato anche precedentemente, il parser inizialmente utilizzato era
-esclusivamente in grado di tradurre semplici query il che risultava essere insufficiente affinché potesse essere usato in modo non banale da strumenti bi Business Intelligence.
+esclusivamente in grado di tradurre semplici query il che è risultato essere insufficiente affinché potesse essere usato da strumenti di Business Intelligence in modo non banale.
 
-Ho quindi studiato quali fossero i costrutti maggiormente presenti nelle query generate automaticamente dagli strumenti di BI, di cui un esempio sopra nella sezione \ref{sec:bi-connector_parsing}. Tra questi
+\`E stato quindi analizzato quali fossero i costrutti maggiormente presenti nelle query generate automaticamente dagli strumenti di BI, di cui un esempio sopra nella sezione \ref{sec:bi-connector_parsing}. Tra questi
 i principali erano sicuramente il GROUP BY per l'aggregazione, dato anche lo scopo degli strumenti di BI di fornire informazioni riassuntive d'insieme sull'intero dataset, e l'ORDER BY che
-permette una visualizzazione indipendente da come i dati sono salvati, ma che dipende da parametri arbitrari.
+permette di visualizzazione i dati in base a parametri arbitrari.
 
 \subsection{Database per il testing}
 Durante la durata del tirocinio, tutte le funzionalità implementate sono state testate su un semplice VKG con un database relazionale H2 come sorgente che rappresenta alcune informazioni riguardanti professori universitari.
@@ -233,12 +233,135 @@ uso è scoraggiato in quanto il risultato potrebbe non essere deterministico se 
 ampiamente usato nelle query generate in modo automatico da Tableau.
 
 \subsection{Combinazione tabelle}
-Cross e inner join già presenti, implementazione left join (scontato di conseguenza il right join)
-Problematiche sorte su colonne con stessi nomi
+Un'altra parte importante al fine formulare query con risultati non banali, è la possibilità di combinare le informazioni presenti in molteplici tabelle. Personalmente, mi sono occupata
+esclusivamente dell'implementazione del LEFT JOIN in quanto CROSS e INNER JOIN erano già entrambi funzionanti nel momento in cui ho iniziato il mio tirocinio.
+
+In particolare, l'operazione di LEFT JOIN estende tutte le righe della prima tabella con i valori di una seconda tabella basandosi su una determinata condizione booleana di join. Tale condizione
+può essere espressa in due modi:
+\begin{itemize}
+    \item \verb+LEFT JOIN ON condition+: in questo caso viene specificata una serie di condizioni, tipicamente di uguaglianza tra due colonne appartenenti a tabelle diverse  
+    \item \verb+LEFT JOIN USING column+: usato se la colonna rispetto alla quale vogliamo eseguire il join ha lo stesso nome in entrambe le tabelle
+\end{itemize}
+
+A fini implementativi, entrambe le condizioni vengono espresse come un ImmutableExpression, ovvero un espressione booleana, la quale viene usata come filtro all'interno di un left join node. 
+Di seguito un esempio dell'IQTreeExpression e del risultato generato dalla query: 
+\begin{verbatim}
+    SELECT p.id, "fName", "totalStudents"
+    FROM prof p
+    LEFT JOIN prof_stats ps ON p.id = ps."profId"
+\end{verbatim}
+la quale produce come IQTreeExpression
+\begin{verbatim}
+    IQTreeExpression{iqTree=CONSTRUCT [id, fName, totalStudents] []
+     CONSTRUCT [id, fName, totalStudents,lName, countCourse, profId,
+        variabili generate casualmente per univocità] [elenco 
+        sostituzioni come visto precedentemente]
+      CONSTRUCT [id, fName, lName, profId, totalStudents, countCourse] []
+       LJ STRICT_EQ2(id,profId)
+        EXTENSIONAL "prof_views"."prof"(0:id,1:fName,2:lName)
+        EXTENSIONAL "prof_views"."prof_stats"(0:profId,1:totalStudents,
+            2:countCourse), 
+    raExpressionAttributes=attributes: {id=id, "fName"=fName, 
+        "totalStudents"=totalStudents} with {id=[], "fName"=[], 
+        "totalStudents"=[]}}
+\end{verbatim}
+ed ha come risultato la tabella \ref{tab:leftJoinOn}.
+\begin{table}[ht]
+    \centering
+    \caption{Tabella LEFT JOIN}
+    \label{tab:leftJoinOn}
+    \begin{tabular}{ | c | c | c | c | c | c |}
+        \hline
+        id                                         & fName   & totalStudents \\ \hline
+        http://university.example.org/professor/10 & Roger   & 21            \\ \hline
+        http://university.example.org/professor/20 & Frank   & NULL          \\ \hline
+        http://university.example.org/professor/30 & John    & 12            \\ \hline
+        http://university.example.org/professor/40 & Micheal & NULL          \\ \hline
+        http://university.example.org/professor/50 & Diego   & NULL          \\ \hline
+        http://university.example.org/professor/60 & Johann  & NULL          \\ \hline
+        http://university.example.org/professor/70 & Barbare & NULL          \\ \hline
+        http://university.example.org/professor/80 & Mary    & 13            \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Questa implementazione risulta non essere però completa in quanto presenta comportamenti non corretti in alcuni casi nei quali le colonne sulle quali viene eseguito il join hanno lo stesso nome.
+Ad esempio, la query 
+\begin{verbatim}
+    SELECT p.*, ps.*
+    FROM (SELECT id as "profId", "fName", "lName" FROM prof_views.prof p1) p
+    LEFT JOIN prof_views.prof_stats ps ON p."profId" = ps."profId"
+\end{verbatim}
+ritorna un errore in quanto i nomi di due colonne all'interno del SELECT sono uguali. Questa è una limitazione di Ontop stesso il quale non permette di avere variabili
+con lo stesso nome all'interno di una proiezione.
+
+Una volta realizzato il LEFT JOIN, l'implementazione del RIGHT JOIN è risultata essere banale in quanto è sufficiente invertire i ruoli delle due tabelle sulle quali viene effettuato 
+il join per ottenere il comportamento corretto.
 
 \subsection{Operazioni insiemistiche}
-Operazioni su insiemi (unione e sottrazione) implementate con alcune restrizioni.
-L'implementazione della sottrazione è interessante (implementata come filtro su un left join).
+Gli operatori insiemistici uniscono i risultati di due query in un unico insieme finale. I due insiemi che devono essere uniti devono rispettare alcune condizioni:
+devono restituire lo stesso numero di colonne e colonne corrispondenti devono avere tipi compatibili \cite{PGSetOp}. Inoltre, una limitazione aggiuntiva introdotta dalla nostra 
+implementazione prevede che colonne corrispondenti debbano avere lo stesso nome.
+
+\subsubsection*{UNION}
+L'operazione di UNION aggiunge alle righe risultanti dalla prima query quelle ottenute da una seconda query eliminando i duplicati. Se si vuole mantenere le righe duplicate è possibile
+usare il costrutto UNION ALL.
+
+La sua implementazione prevede l'utilizzo di uno union node, il quale mantiene i duplicati, seguito eventualmente da un distinct node nel caso sia necessario eliminare le copie. 
+
+\subsubsection*{EXCEPT}
+L'operazione di sottrazione, chiamata in PostgreSQL EXCEPT invece dello standard MINUS, restituisce tutte le righe risultanti dalla prima query che non sono presenti anche nei 
+risultati della seconda. 
+
+La sua implementazione risulta essere particolarmente interessante in quanto non esiste un IQ node che ne imiti di comportamento. Viene quindi eseguito un left join tra le due
+tabelle e tramite un filtro vengono eliminate tutte le righe per le quali le colonne provenienti dalla tabella di destra, identificate dalla colonna ausiliaria \textit{rightProv}, 
+non sono pari a NULL. Infine viene usato un construct node così da mantenere solo le variabili desiderate. Ad esempio la query
+\begin{verbatim}
+    SELECT "id"
+    FROM prof p
+    EXCEPT
+    SELECT "profId" AS "id"
+    FROM prof_stats ps 
+\end{verbatim}
+ha come risultato la tabella \ref{tab:minus}
+\begin{table}[h]
+    \centering
+    \caption{Tabella MINUS}
+    \label{tab:minus}
+    \begin{tabular}{ | c | c | c | c | c | c |}
+        \hline
+        id                                         \\ \hline
+        http://university.example.org/professor/20 \\ \hline
+        http://university.example.org/professor/40 \\ \hline
+        http://university.example.org/professor/50 \\ \hline
+        http://university.example.org/professor/60 \\ \hline
+        http://university.example.org/professor/70 \\ 
+        \hline
+    \end{tabular}
+\end{table}
+
+\noindent
+e produce come l'IQTreeExpression: 
+\begin{verbatim}
+    IQTreeExpression{iqTree=CONSTRUCT [id] []
+     FILTER IS_NULL(rightProv)
+       LJ
+        CONSTRUCT [id] []
+         CONSTRUCT [id, fName, lName, variabili generate casualmente per
+          univocità] [elenco sostituzioni]
+            CONSTRUCT [id, fName, lName] []
+             EXTENSIONAL "prof_views"."prof"(0:id,1:fName,2:lName)
+        CONSTRUCT [id, rightProv] [rightProv/"TRUE"^^BOOLEAN]
+         CONSTRUCT [id] []
+          CONSTRUCT [id, totalStudents,countCourse, variabili generate 
+           casualmente per univocità] [elenco sostituzioni]
+            CONSTRUCT [id, totalStudents, countCourse] []
+             EXTENSIONAL "prof_views"."prof_stats"(0:id,1:totalStudents,
+             2:countCourse),
+    raExpressionAttributes=attributes: {"id"=id} with {"id"=[]}}
+\end{verbatim}
+
+Inoltre non è stato possibile implementare l'operazione di EXCEPT ALL in quanto non supportata dalla versione in uso di JSqlParser.
 
 \subsection{Aggregazione}
 Funzioni di aggregazione (SUM, COUNT, MIN, MAX, AVG) per cui è stato necessario introdurre una funzionalità che ritardasse l'assegnazione del

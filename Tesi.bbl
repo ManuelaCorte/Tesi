@@ -60,6 +60,11 @@ Ontopic.
 \newblock Ontopic studio.
 \newblock \url{https://ontopic.ai/en/ontopic-studio/}.
 
+\bibitem{PGSetOp}
+PostgreSQL.
+\newblock Combining queries (union, intersect, except).
+\newblock \url{https://www.postgresql.org/docs/14/queries-union.html}.
+
 \bibitem{PGLimit}
 PostgreSQL.
 \newblock Limit and offset.
