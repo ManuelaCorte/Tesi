@@ -458,6 +458,49 @@ Come detto prima è appunto possibile vedere il construction node al di sotto de
 LENGTH e il filtro usato per l'implementazione del HAVING al di sopra dell'aggregation node.
 
 Così come per l'ORDER BY, anche per il GROUP BY è possibile indicare le colonne rispetto a cui si vuole raggruppare utilizzando un indice numerico.
+
 \section{Risultati ottenuti}
-Con l'introduzione dell'aggregazione (e anche dell'order by) è stato possibile rimuovere buona parte delle query automaticamente create da Tableau --> accesso a Tableau
-e prime dashboard create su dataset non banali (chiedere a Benjamin se ha qualche screenshot)
+Con l'introduzione dei costrutti elencati fino ad adesso si è reso possibile la formulazione di query non banali. Ad esempio una query ,moderatamente
+complessa, come quella descritta sotto può adesso essere tradotta correttamente.
+\begin{verbatim}
+    SELECT "teacher", sum("nbStudents") AS "totalStudents"
+    FROM teaching t 
+    LEFT JOIN course c on t.course = c.id 
+    GROUP BY teacher 
+    HAVING SUM(duration) >= 20
+    ORDER BY teacher DESC
+    LIMIT 1 OFFSET 1
+\end{verbatim}
+Questa query ritorna una singola riga \ref{tab:complex}
+\begin{table}[ht]
+    \small
+    \centering
+    \caption{Tabella riassuntiva}
+    \label{tab:complex}
+    \begin{tabular}{| c | c | }
+        \hline
+        teacher                                    & totalStudents  \\ \hline
+        http://university.example.org/professor/10 & 21             \\ \hline
+    \end{tabular}
+\end{table}
+
+\noindent
+e genera come IQTreeExpression:
+\begin{verbatim}
+    IQTreeExpression{iqTree=SLICE offset=1 limit=1
+     CONSTRUCT [teacher, totalStudents] []
+      ORDER BY [DESC(teacher)]
+       CONSTRUCT [teacher, teacher6be09e18-d526-4dd7-9447-c5dfa148ede7,
+       totalStudents] [teacher6be09e18-d526-4dd7-9447-c5dfa148ede7/teacher]
+        FILTER GTE(agg8dcab048-1be9-47d3-903e-fe401d8d21bd,"20"^^BIGINT)
+         AGGREGATE [teacher] [totalStudents/SUM_BIGINT(nbStudents2), 
+         agg8dcab048-1be9-47d3-903e-fe401d8d21bd/SUM_DECIMAL(duration2)]
+          CONSTRUCT [teacher, course1, id2, duration2, nbStudents2] []
+           LJ STRICT_EQ2(course1,id2)
+            EXTENSIONAL "prof_views"."teaching"(0:teacher,1:course1)
+            EXTENSIONAL "prof_views"."course"(0:id2,1:duration2,2:nbStudents2)
+    raExpressionAttributes=attributes: {"teacher"=teacher, 
+    "totalStudents"=totalStudents} with {"teacher"=[], "totalStudents"=[]}}
+\end{verbatim}
+Inoltre l'introduzione dell'aggregazione, e anche dell'ORDER BY, ha reso possibile l'accesso al database da parte di Tableau e la creazione delle prime 
+dashboard.(chiedere a Benjamin se ha qualche screenshot)
