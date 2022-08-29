@@ -69,7 +69,7 @@ esclusivamente in grado di tradurre semplici query il che è risultato essere in
 i principali erano sicuramente il GROUP BY per l'aggregazione, dato anche lo scopo degli strumenti di BI di fornire informazioni riassuntive d'insieme sull'intero dataset, e l'ORDER BY che
 permette di visualizzazione i dati in base a parametri arbitrari.
 
-\subsection{Database per il testing}
+\subsection{Database di riferimento}
 Durante la durata del tirocinio, tutte le funzionalità implementate sono state testate su un semplice VKG con un database relazionale H2 come sorgente che rappresenta alcune informazioni riguardanti professori universitari.
 I test sono stati eseguiti sia all'interno della codebase stessa grazie al framework JUnit che tramite il client SQL DBeaver che ha permesso la visualizzazione del database PostgreSQL creato dal bi-connector e la sua
 interrogazione diretta.
@@ -159,8 +159,8 @@ Di seguito un esempio di un IQTreeExpression generato dalla query
     IQTreeExpression{
         iqTree = EXTENSIONAL "prof_views"."prof"(0:id1,1:fName1,2:lName1), 
         raExpressionAttributes=attributes: {"id"=id1, p."id"=id1, 
-            "fName"=fName1, p."fName"=fName1, "lName"=lName1, p."lName"=lName1} 
-            with {"id"=[p], "fName"=[p], "lName"=[p]}
+         "fName"=fName1, p."fName"=fName1, "lName"=lName1, p."lName"=lName1} 
+         with {"id"=[p], "fName"=[p], "lName"=[p]}
     } 
     \end{verbatim}
 
@@ -172,7 +172,7 @@ in modo più rapido dato che l'implementazione dei costrutti non aveva logiche c
 \subsubsection*{DISTINCT}
 Il costrutto DISTINCT permette di eliminare righe duplicate ed è stato implementato aggiungendo un nodo IQ di tipo distinct.
 
-La clausola DISTINCT ON non è stata invece implementata in quanto non parte dello standard SQL, ma fornita da PostgreSQL. Inoltre non è stata considerata fondamentale in qunato
+La clausola DISTINCT ON non è stata invece implementata in quanto non parte dello standard SQL, ma fornita da PostgreSQL. Inoltre non è stata considerata fondamentale in quanto
 può essere rimpiazzata tramite l'uso di una subquery o in alcuni casi anche tramite aggregazione \cite{PGDistinct}.
 \subsubsection*{LIMIT e OFFSET}
 Le clausole LIMIT e OFFSET permettono di restringere il numero di righe restituite da una query e di saltare le prime $n$ righe quando queste vengono restituire rispettivamente.
