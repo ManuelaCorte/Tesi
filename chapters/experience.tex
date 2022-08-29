@@ -190,28 +190,28 @@ Inoltre, quando si utilizza LIMIT è consigliato aggiungere anche un ORDER BY ch
 esecuzioni successive della stessa query \cite{PGLimit}.
 
 \subsection{Ordinamento righe}
-La keyword ORDER BY permette riordinare le righe risultanti da una query in base a specifiche condizioni, sia in modo ascendente che discendente. Un altro aspetto importante è quello del 
-NULL ordering, ovvero come i valori NULL sono trattati al fine dell'ordinamento. In PostgreSQL i valori pari a NULL vengono considerati come maggiori di qualsiasi altro valore mentre questo 
-è l'opposto per gli IQ tree i quali seguono una semantica simile a quella di SPARQL. Quindi gli ordinamenti del tipo \verb+ORDER BY ASC NULLS LAST+ e \verb+ORDER BY DESC NULLS FIRST+ 
-non sono supportati \cite{PGOrderBY}. 
+La keyword ORDER BY permette riordinare le righe risultanti da una query in base a specifiche condizioni, sia in modo ascendente che discendente. Un altro aspetto importante è quello del
+NULL ordering, ovvero come i valori NULL sono trattati al fine dell'ordinamento. In PostgreSQL i valori pari a NULL vengono considerati come maggiori di qualsiasi altro valore mentre questo
+è l'opposto per gli IQ tree i quali seguono una semantica simile a quella di SPARQL. Quindi gli ordinamenti del tipo \verb+ORDER BY ASC NULLS LAST+ e \verb+ORDER BY DESC NULLS FIRST+
+non sono supportati \cite{PGOrderBY}.
 
 L'implementazione dell'ORDER BY è risultata essere relativamente complessa in quanto può essere usata su un'ampia casistica. Ad esempio si può avere uno o più criteri di ordinamento e
-ognuno di essi può essere una colonna o una funzione. Inizialmente il costrutto è stato implementato usando un order by node il quale richiede come argomento una lista di comparatori 
-dove ogni comparatore è costituito dal termine rispetto al quale si sta effettuando l'ordinamento e se quest'ultimo è ascendente o meno. 
+ognuno di essi può essere una colonna o una funzione. Inizialmente il costrutto è stato implementato usando un order by node il quale richiede come argomento una lista di comparatori
+dove ogni comparatore è costituito dal termine rispetto al quale si sta effettuando l'ordinamento e se quest'ultimo è ascendente o meno.
 
-Una volta svolti i primi test, è subito emerso un problema riguardante la rinomina delle variabili in quanto una volta che ad una variabile veniva assegnato un alias si andava a perdere 
+Una volta svolti i primi test, è subito emerso un problema riguardante la rinomina delle variabili in quanto una volta che ad una variabile veniva assegnato un alias si andava a perdere
 quale fosse il nome della variabile originale. Quindi ad esempio un query del tipo:
 \begin{verbatim}
     SELECT "fName" as v
     FROM prof p 
     ORDER BY "fName"
 \end{verbatim}
-avrebbe restituito un errore in quanto l'unica variabile presente a seguito della proiezione sarebbe stata \textit{v} e sarebbe quindi stato impossibile eseguire un ordinamento basato su 
-\textit{fName}.  
+avrebbe restituito un errore in quanto l'unica variabile presente a seguito della proiezione sarebbe stata \textit{v} e sarebbe quindi stato impossibile eseguire un ordinamento basato su
+\textit{fName}.
 
-Si è quindi deciso di estendere l'implementazione per supportare questo comportamento aggiungendo un construction node che proietta tutte le variabili e tiene traccia delle sostituzioni che 
-avvengono. Inoltre al fine di evitare collisioni tra gli attributi non proiettati, che vengono appunto mantenuti in questa versione, e gli alias, tutti gli attributi sono rinominati aggiungendo un 
-suffisso casuale al nome della variabile stessa. La query vista sopra produce questa IQTreeExpression: 
+Si è quindi deciso di estendere l'implementazione per supportare questo comportamento aggiungendo un construction node che proietta tutte le variabili e tiene traccia delle sostituzioni che
+avvengono. Inoltre al fine di evitare collisioni tra gli attributi non proiettati, che vengono appunto mantenuti in questa versione, e gli alias, tutti gli attributi sono rinominati aggiungendo un
+suffisso casuale al nome della variabile stessa. La query vista sopra produce questa IQTreeExpression:
 \begin{verbatim}
     IQTreeExpression{
         iqTree=CONSTRUCT [v] []
@@ -239,12 +239,12 @@ esclusivamente dell'implementazione del LEFT JOIN in quanto CROSS e INNER JOIN e
 In particolare, l'operazione di LEFT JOIN estende tutte le righe della prima tabella con i valori di una seconda tabella basandosi su una determinata condizione booleana di join. Tale condizione
 può essere espressa in due modi:
 \begin{itemize}
-    \item \verb+LEFT JOIN ON condition+: in questo caso viene specificata una serie di condizioni, tipicamente di uguaglianza tra due colonne appartenenti a tabelle diverse  
+    \item \verb+LEFT JOIN ON condition+: in questo caso viene specificata una serie di condizioni, tipicamente di uguaglianza tra due colonne appartenenti a tabelle diverse
     \item \verb+LEFT JOIN USING column+: usato se la colonna rispetto alla quale vogliamo eseguire il join ha lo stesso nome in entrambe le tabelle
 \end{itemize}
 
-A fini implementativi, entrambe le condizioni vengono espresse come un ImmutableExpression, ovvero un espressione booleana, la quale viene usata come filtro all'interno di un left join node. 
-Di seguito un esempio dell'IQTreeExpression e del risultato generato dalla query: 
+A fini implementativi, entrambe le condizioni vengono espresse come un ImmutableExpression, ovvero un espressione booleana, la quale viene usata come filtro all'interno di un left join node.
+Di seguito un esempio dell'IQTreeExpression e del risultato generato dalla query:
 \begin{verbatim}
     SELECT p.id, "fName", "totalStudents"
     FROM prof p
@@ -286,7 +286,7 @@ ed ha come risultato la tabella \ref{tab:leftJoinOn}.
 \end{table}
 
 Questa implementazione risulta non essere però completa in quanto presenta comportamenti non corretti in alcuni casi nei quali le colonne sulle quali viene eseguito il join hanno lo stesso nome.
-Ad esempio, la query 
+Ad esempio, la query
 \begin{verbatim}
     SELECT p.*, ps.*
     FROM (SELECT id as "profId", "fName", "lName" FROM prof_views.prof p1) p
@@ -295,26 +295,26 @@ Ad esempio, la query
 ritorna un errore in quanto i nomi di due colonne all'interno del SELECT sono uguali. Questa è una limitazione di Ontop stesso il quale non permette di avere variabili
 con lo stesso nome all'interno di una proiezione.
 
-Una volta realizzato il LEFT JOIN, l'implementazione del RIGHT JOIN è risultata essere banale in quanto è sufficiente invertire i ruoli delle due tabelle sulle quali viene effettuato 
+Una volta realizzato il LEFT JOIN, l'implementazione del RIGHT JOIN è risultata essere banale in quanto è sufficiente invertire i ruoli delle due tabelle sulle quali viene effettuato
 il join per ottenere il comportamento corretto.
 
 \subsection{Operazioni insiemistiche}
 Gli operatori insiemistici uniscono i risultati di due query in un unico insieme finale. I due insiemi che devono essere uniti devono rispettare alcune condizioni:
-devono restituire lo stesso numero di colonne e colonne corrispondenti devono avere tipi compatibili \cite{PGSetOp}. Inoltre, una limitazione aggiuntiva introdotta dalla nostra 
+devono restituire lo stesso numero di colonne e colonne corrispondenti devono avere tipi compatibili \cite{PGSetOp}. Inoltre, una limitazione aggiuntiva introdotta dalla nostra
 implementazione prevede che colonne corrispondenti debbano avere lo stesso nome.
 
 \subsubsection*{UNION}
 L'operazione di UNION aggiunge alle righe risultanti dalla prima query quelle ottenute da una seconda query eliminando i duplicati. Se si vuole mantenere le righe duplicate è possibile
 usare il costrutto UNION ALL.
 
-La sua implementazione prevede l'utilizzo di uno union node, il quale mantiene i duplicati, seguito eventualmente da un distinct node nel caso sia necessario eliminare le copie. 
+La sua implementazione prevede l'utilizzo di uno union node, il quale mantiene i duplicati, seguito eventualmente da un distinct node nel caso sia necessario eliminare le copie.
 
 \subsubsection*{EXCEPT}
-L'operazione di sottrazione, chiamata in PostgreSQL EXCEPT invece dello standard MINUS, restituisce tutte le righe risultanti dalla prima query che non sono presenti anche nei 
-risultati della seconda. 
+L'operazione di sottrazione, chiamata in PostgreSQL EXCEPT invece dello standard MINUS, restituisce tutte le righe risultanti dalla prima query che non sono presenti anche nei
+risultati della seconda.
 
 La sua implementazione risulta essere particolarmente interessante in quanto non esiste un IQ node che ne imiti di comportamento. Viene quindi eseguito un left join tra le due
-tabelle e tramite un filtro vengono eliminate tutte le righe per le quali le colonne provenienti dalla tabella di destra, identificate dalla colonna ausiliaria \textit{rightProv}, 
+tabelle e tramite un filtro vengono eliminate tutte le righe per le quali le colonne provenienti dalla tabella di destra, identificate dalla colonna ausiliaria \textit{rightProv},
 non sono pari a NULL. Infine viene usato un construct node così da mantenere solo le variabili desiderate. Ad esempio la query
 \begin{verbatim}
     SELECT "id"
@@ -335,13 +335,13 @@ ha come risultato la tabella \ref{tab:minus}
         http://university.example.org/professor/40 \\ \hline
         http://university.example.org/professor/50 \\ \hline
         http://university.example.org/professor/60 \\ \hline
-        http://university.example.org/professor/70 \\ 
+        http://university.example.org/professor/70 \\
         \hline
     \end{tabular}
 \end{table}
 
 \noindent
-e produce come l'IQTreeExpression: 
+e produce come l'IQTreeExpression:
 \begin{verbatim}
     IQTreeExpression{iqTree=CONSTRUCT [id] []
      FILTER IS_NULL(rightProv)
@@ -364,10 +364,100 @@ e produce come l'IQTreeExpression:
 Inoltre non è stato possibile implementare l'operazione di EXCEPT ALL in quanto non supportata dalla versione in uso di JSqlParser.
 
 \subsection{Aggregazione}
-Funzioni di aggregazione (SUM, COUNT, MIN, MAX, AVG) per cui è stato necessario introdurre una funzionalità che ritardasse l'assegnazione del
-tipo alla funzione. (Questo perché SPARQL a differenza di SQL usa una tipizzazione dinamica).
-Costrutto Group by e having (interessante l'implementazione per funzioni con la sostituzione dei functional term con variabili)
+L'aggregazione è una funzionalità estremamente importante in quanto permette di raggruppare i dati in base a parametri arbitrari ed
+ottenere da questi informazioni riassuntive sui dati.
+\subsubsection*{Funzioni di aggregazione}
+Le funzioni di aggregazione (SUM, COUNT, MIN, MAX, AVG ) permettono di esprimere caratteristiche di una colonna, o di un'intera tabella,
+tramite un singolo numero riassuntivo.
 
+Il principale ostacolo alla loro implementazione è stato il determinare il tipo della colonna sulla quale la funzione era applicata.
+Per questo, inizialmente, si è assunto a priori che tutte le funzioni di aggregazione fossero eseguite su colonne di tipo intero. In un
+secondo momento si è implementato un meccanismo grazie alla classe
+\textit{NotYetTypedAggregationFunctionSymbol.java} la quale permette di posporre la decisione sul tipo di dato fino a quando questo non è
+reso disponibile.
+
+Ad esempio, le due query seguenti applicano la funzione SUM alle colonne nbStudents e duration le quali sono rispettivamente un numero intero
+e uno decimale ed è possibile vedere ciò nel tipo che viene dato alla funzione all'interno dell'aggregation node.
+\begin{verbatim}
+    SELECT sum("nbStudents") AS sum
+    FROM course c 
+\end{verbatim}
+produce l'IQTreeExpression:
+\begin{verbatim}
+    IQTreeExpression{iqTree=CONSTRUCT [sum] []
+     CONSTRUCT [sum] []
+      AGGREGATE [] [sum/SUM_BIGINT(nbStudents1)]
+       CONSTRUCT [id1, duration1, nbStudents1] []
+        EXTENSIONAL "prof_views"."course"(0:id1,1:duration1,2:nbStudents1),
+    raExpressionAttributes=attributes: {sum=sum} with {sum=[]}}
+\end{verbatim}
+mentre la query
+\begin{verbatim}
+    SELECT sum("duration") AS sum
+    FROM course c 
+\end{verbatim}
+produce l'IQTreeExpression
+\begin{verbatim}
+    IQTreeExpression{iqTree=CONSTRUCT [sum] []
+     CONSTRUCT [sum] []
+      AGGREGATE [] [sum/SUM_DECIMAL(duration1)]
+       CONSTRUCT [id1, duration1, nbStudents1] []
+        EXTENSIONAL "prof_views"."course"(0:id1,1:duration1,2:nbStudents1),
+    raExpressionAttributes=attributes: {sum=sum} with {sum=[]}}    
+\end{verbatim}
+
+\subsubsection*{GROUP BY}
+La clausola GROUP BY permette di raggruppare insieme righe di una tabella che hanno lo stesso valore per tutte le colonne per le quali stiamo 
+raggruppando. Una volta avvenuto il raggruppamento determinati gruppi possono essere eliminati in base ad una condizione booleana
+specificata all'interno del costrutto HAVING, in modo simile a quanto accade per la clausola WHERE \cite{PGGroupBy}.
+
+Il costrutto viene implementato tramite un aggregation node al di sopra del quale viene aggiunto un filter node nel caso in cui sia presente 
+la clausola HAVING. La parte più problematica risulta essere la gestione della proiezione degli variabili in quanto solo le variabili rispetto 
+a cui si raggruppato possono essere proiettate, ma allo stesso tempo è necessario mantenere anche tutte le variabili rispetto a quali non si
+è raggruppato in quanto queste possono essere usate all'interno di funzioni di aggregazione nel SELECT e nel HAVING. 
+
+Inoltre il GROUP BY permette di raggruppare non solo in base a colonne nella tabella, ma anche con funzioni. Al fine di rendere l'implementazione
+omogenea con il caso base descritto sopra, prima di gestire il GROUP BY viene aggiunto un construction node dove ogni funzione distinta presente 
+viene sostituita con una variabile; in questo modo il GROUP BY "vede" esclusivamente variabili. 
+Di seguito una query di esempio:
+\begin{verbatim}
+    SELECT teacher, MIN(course) AS "minCourse"
+    FROM teaching t 
+    GROUP BY teacher, LENGTH("teacher") 
+    HAVING LENGTH(teacher) > 20
+\end{verbatim}
+la quale ha come risultato la tabella \ref{tab:groupBy}
+\begin{table}[ht]
+    \small
+    \centering
+    \caption{Tabella GROUP BY}
+    \label{tab:groupBy}
+    \begin{tabular}{| c | c | }
+        \hline
+        teacher                                    & course                                                   \\ \hline
+        http://university.example.org/professor/10 & http://university.example.org/course/DiscreteMathematics \\ \hline
+        http://university.example.org/professor/30 & http://university.example.org/course/AdvancedDatabases   \\ \hline
+        http://university.example.org/professor/80 & http://university.example.org/course/ScientificWriting   \\ \hline
+    \end{tabular}
+\end{table}
+e produce l'IQTreeExpression
+\begin{verbatim}
+    IQTreeExpression{iqTree=CONSTRUCT [teacher, minCourse] []
+     CONSTRUCT [teacher, minCourse, teacher1c52a1c4-11f6-43c1-8311-9e908578b9] 
+     [teacher1c52a1c4-11f6-43c1-8311-9e908578b9/teacher]
+      FILTER GT(CHAR_LENGTH1(teacher),"20"^^BIGINT)
+       AGGREGATE [fun6079a412-7f91-4004-9bcc-f3e2f545d3ce, teacher] 
+       [minCourse/MIN_TEXT(course1)]
+        CONSTRUCT [teacher, course1, fun6079a412-7f91-4004-9bcc-f3e2f545d3ce] 
+        [fun6079a412-7f91-4004-9bcc-f3e2f545d3ce/CHAR_LENGTH1(teacher)]
+         EXTENSIONAL "prof_views"."teaching"(0:teacher,1:course1),
+    raExpressionAttributes=attributes:{teacher=teacher, "minCourse"=minCourse} 
+    with {teacher=[], "minCourse"=[]}}
+\end{verbatim}
+Come detto prima è appunto possibile vedere il construction node al di sotto dell'aggregation node che esegue la sostituzione rispetto alla funzione
+LENGTH e il filtro usato per l'implementazione del HAVING al di sopra dell'aggregation node.
+
+Così come per l'ORDER BY, anche per il GROUP BY è possibile indicare le colonne rispetto a cui si vuole raggruppare utilizzando un indice numerico.
 \section{Risultati ottenuti}
 Con l'introduzione dell'aggregazione (e anche dell'order by) è stato possibile rimuovere buona parte delle query automaticamente create da Tableau --> accesso a Tableau
 e prime dashboard create su dataset non banali (chiedere a Benjamin se ha qualche screenshot)

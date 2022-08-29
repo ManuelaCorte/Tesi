@@ -65,6 +65,12 @@ PostgreSQL.
 \newblock Combining queries (union, intersect, except).
 \newblock \url{https://www.postgresql.org/docs/14/queries-union.html}.
 
+\bibitem{PGGroupBy}
+PostgreSQL.
+\newblock The group by and having clauses.
+\newblock
+  \url{https://www.postgresql.org/docs/current/queries-table-expressions.html#QUERIES-GROUP}.
+
 \bibitem{PGLimit}
 PostgreSQL.
 \newblock Limit and offset.
