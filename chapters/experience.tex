@@ -24,11 +24,24 @@ SQL sul database in una forma equivalente e comprensibile dal VKG sottostante.
 
 \subsection{Creazione database}
 \label{sec:bi-connector_db}
-Dalle sorgenti di dati e dai file che utilizzati per creare i mapping di un VKG viene creato un database PostgreSQL tramite classi che si occupano di estrarre metadati dall'ontologia e manipolarli per creare viste relazionali.
-Questo è reso possibile modificando direttamente i cataloghi di sistema resi disponibili da PostgreSQL tramite l'insieme di tabelle \textit{pg\_catalog}.
-La comunicazione da e verso questo database è resa possibile tramite un'implementazione basata sul protocollo Wire che è il protocollo usato da PostgreSQL per lo scambio di messaggi.
+A partire dal nostro VKG è possibile definire un insieme di viste SPARQL. 
+dove ognuna di queste viste corrisponde ad un'associazione tra una query SELECT SPARQL e un nome che ne descrive il risultato restituito. Ad esempio la vista seguente:
+\begin{verbatim}
+[[schemas.views]]
+    name="prof"
+    query="""
+        PREFIX : <http://university.example.org/>
+        SELECT * WHERE {
+        ?id a :Professor ; :firstName ?fName ; :lastName ?lName .
+        }
+    """
+\end{verbatim}
+assegna il nome \textit{prof} all'insieme di dati il cui \textit{id} è di classe Professor e che ha come attributi \textit{firstName} e \textit{lastName}.
 
-Da estendere chiedendo a Benjamin
+Queste viste vengono convertite in delle viste relazioni le quali costituiscono il database PostgreSQL che usiamo per connetterci a strumenti di BI.
+
+La parte più complessa della traduzione risulta essere la gestione dei tipi. Infatti, SPARQL è basato su tipizzazione dinamica il che significa che tipi diversi possono essere usati per la stessa colonna, mentre SQL usa 
+tipizzazione statica. Tutte le viste per le quali non è possibile determinare il tipo finale prima della traduzione vengono quindi scartate.
 
 \subsection{Parsing di query SQL}
 \label{sec:bi-connector_parsing}
