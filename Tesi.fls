@@ -868,6 +868,14 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 OUTPUT Tesi.toc
+INPUT ./Tesi.lof
+INPUT Tesi.lof
+INPUT Tesi.lof
+OUTPUT Tesi.lof
+INPUT ./Tesi.lot
+INPUT Tesi.lot
+INPUT Tesi.lot
+OUTPUT Tesi.lot
 INPUT ./chapters/introduction.tex
 INPUT chapters/introduction.tex
 INPUT ./chapters/introduction.tex

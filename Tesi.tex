@@ -74,6 +74,11 @@
 
 % indice
 \tableofcontents
+\listoffigures
+\begingroup
+\let\clearpage\relax
+\listoftables
+\endgroup
 \clearpage
 
 % definizione titoli in forma "numero capitolo titolo capitolo"
@@ -96,4 +101,5 @@
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
 \addcontentsline{toc}{chapter}{Bibliografia}
+
 \end{document}
