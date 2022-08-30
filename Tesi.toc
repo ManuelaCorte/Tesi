@@ -23,6 +23,6 @@
 \contentsline {subsection}{\numberline {2.4.4}Operazioni insiemistiche}{17}{subsection.2.4.4}%
 \contentsline {subsection}{\numberline {2.4.5}Aggregazione}{18}{subsection.2.4.5}%
 \contentsline {section}{\numberline {2.5}Risultati ottenuti}{20}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Conclusioni}{22}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Possibili sviluppi futuri}{22}{section.3.1}%
-\contentsline {chapter}{Bibliografia}{24}{chapter*.18}%
+\contentsline {chapter}{\numberline {3}Conclusioni}{23}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Possibili sviluppi futuri}{23}{section.3.1}%
+\contentsline {chapter}{Bibliografia}{25}{chapter*.21}%
